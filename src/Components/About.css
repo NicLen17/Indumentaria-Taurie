@@ -1,0 +1,21 @@
+.section {
+    background-color: #f8f8f8;
+    padding: 60px 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.description {
+    font-size: 1rem;
+    color: #666;
+}

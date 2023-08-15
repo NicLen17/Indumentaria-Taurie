@@ -1,0 +1,46 @@
+:root {
+    --principal: #0a0a0a;
+    --secundario: #7c7c7c;
+    --decoraciones: #ffba00;
+}
+
+* {
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    height: 100vh;
+    color: var(--principal);
+    background: linear-gradient(-45deg, #3f3f3f, #333333, #070707, #a0a0a0);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-size: 20px;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secundario);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--decoraciones);
+}

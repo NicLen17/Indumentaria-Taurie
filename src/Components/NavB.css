@@ -1,0 +1,24 @@
+.Nav-container {
+    background-image: url("https://img.freepik.com/fotos-premium/patron-fondo-abstracto-textura-marmol-negro-diseno_158502-344.jpg");
+    border-bottom: 2px solid var(--decoraciones);
+}
+
+.Nav-logo {
+    width: 100px;
+}
+
+.Nav-item {
+    color: white !important;
+    font-weight: bold !important;
+    transition: 0.2s !important;
+    padding: 20px !important;
+}
+
+.Nav-item:hover {
+    color: var(--decoraciones) !important; 
+    transform: translateY(-5px);
+}
+
+.Nav-input {
+    border-radius: 15px;
+}
