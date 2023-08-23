@@ -10,8 +10,9 @@
 .Nav-item {
     color: white !important;
     font-weight: bold !important;
+    font-size: 1.6rem !important;
     transition: 0.2s !important;
-    padding: 20px !important;
+    text-shadow: white 1px 0 10px;
 }
 
 .Nav-item:hover {

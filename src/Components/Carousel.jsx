@@ -10,6 +10,7 @@ function Carousel() {
                 pagination={{
                     type: 'progressbar',
                 }}
+                spaceBetween={30}
                 loop={true}
                 navigation={true}
                 modules={[Pagination, Navigation]}
