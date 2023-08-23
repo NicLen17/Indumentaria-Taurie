@@ -10,7 +10,7 @@ function Contact() {
                 <div id='contact' className='Contact-container'>
             <div className='Contact-element m-3'>
                 <div className='Contact-img'>
-                    <a rel='noreferrer' target='_blank' href="https://wa.me/543813379225?text=Buenos%20días,%20vengo%20desde%20la%20pagina%20web%20para%20realizar%20una%20consulta.%20"><img style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "15px" }} src={WA2} alt="" /></a>
+                    <a rel='noreferrer' target='_blank' href="https://wa.me/543815768548?text=Buenos%20días,%20vengo%20desde%20la%20pagina%20web%20para%20realizar%20una%20consulta.%20"><img style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "15px" }} src={WA2} alt="" /></a>
                 </div>
             </div>
             <div className='Contact-element m-3'>

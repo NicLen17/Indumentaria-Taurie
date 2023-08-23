@@ -22,7 +22,7 @@ export default function Footer() {
                     <div className="footer-icons">
                         <a href="mailto:indumtaurie@gmail.com?Subject=Consulta%20desde%20la%20pagina%20web.%20"><img loading='lazy' className='Redes-footer' src="https://icongr.am/simple/gmail.svg?size=128&color=currentColor&colored=true " alt="" /></a>
                         <a target="blank"  href="https://www.instagram.com/indumentaria_taurie/"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/instagram.svg?size=128&color=ff24f8" alt="" /></a>
-                        <a target="blank"  href="https://wa.me/543813379225?text=Buenos%20días,%20vengo%20desde%20la%20pagina%20web%20para%20realizar%20una%20consulta.%20"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/whatsapp.svg?size=30&color=1dcd3b" alt="" /></a> 
+                        <a target="blank"  href="https://wa.me/543815768548?text=Buenos%20días,%20vengo%20desde%20la%20pagina%20web%20para%20realizar%20una%20consulta.%20"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/whatsapp.svg?size=30&color=1dcd3b" alt="" /></a> 
                     </div>
                 </div>
                 <div className="footer-right">
