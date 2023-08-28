@@ -31,3 +31,21 @@
     color: white;
     text-shadow: white 1px 0 10px;
 }
+
+@media (max-width: 1500px) {
+    .About{
+        width: 100%;
+        border: none;
+        border-bottom: 2px solid var(--decoraciones);
+        border-top: 2px solid var(--decoraciones);
+        height: 100%;
+        border-radius: 0px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .About-description{
+        font-size: 1.4rem;
+    }
+}

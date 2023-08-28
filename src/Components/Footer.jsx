@@ -21,12 +21,19 @@ export default function Footer() {
                     </p>
                     <div className="footer-icons">
                         <a href="mailto:indumtaurie@gmail.com?Subject=Consulta%20desde%20la%20pagina%20web.%20"><img loading='lazy' className='Redes-footer' src="https://icongr.am/simple/gmail.svg?size=128&color=currentColor&colored=true " alt="" /></a>
-                        <a target="blank"  href="https://www.instagram.com/indumentaria_taurie/"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/instagram.svg?size=128&color=ff24f8" alt="" /></a>
-                        <a target="blank"  href="https://wa.me/543815768548?text=Buenos%20días,%20vengo%20desde%20la%20pagina%20web%20para%20realizar%20una%20consulta.%20"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/whatsapp.svg?size=30&color=1dcd3b" alt="" /></a> 
+                        <a target="blank" href="https://www.instagram.com/indumentaria_taurie/"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/instagram.svg?size=128&color=ff24f8" alt="" /></a>
+                        <a target="blank" href="https://wa.me/543815768548?text=Buenos%20días,%20vengo%20desde%20la%20pagina%20web%20para%20realizar%20una%20consulta.%20"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/whatsapp.svg?size=30&color=1dcd3b" alt="" /></a>
+                        <a target="blank" href="https://www.facebook.com/profile.php?id=100077452835748"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/facebook-square.svg?size=128&color=4240d4" alt="" /></a>
                     </div>
                 </div>
                 <div className="footer-right">
-                    <div className="mapa-footer mt-2">
+                    <div className='footer-paid'>
+                        <li className='footer-paid-element'><img src="https://icongr.am/fontawesome/cc-visa.svg?size=50&color=000000" alt="" /></li>
+                        <li className='footer-paid-element'><img src="https://icongr.am/fontawesome/cc-mastercard.svg?size=50&color=000000" alt="" /></li>
+                        <li className='footer-paid-element'><img src="https://icongr.am/fontawesome/dollar.svg?size=50&color=000000" alt="" /></li>
+                        <li className='footer-paid-element'><img src="https://icongr.am/fontawesome/truck.svg?size=50&color=000000" alt="" /></li>
+                    </div>
+                    <div className="mapa-footer">
                         <img loading='lazy' src={Logo} alt="Indumentaria Taurie - Ropa - Remera" />
                     </div>
                 </div>

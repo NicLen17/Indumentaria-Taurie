@@ -19,7 +19,3 @@
     color: var(--decoraciones) !important; 
     transform: translateY(-5px);
 }
-
-.Nav-input {
-    border-radius: 15px;
-}
