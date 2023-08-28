@@ -22,7 +22,7 @@ function Carousel() {
             </Swiper>
             <div className="Card-Row-Container">
                 <div className="Card-Row">
-                    <h1>Indumentaria Taurie</h1>
+                    <h1>Taurie</h1>
                 </div>
             </div>
         </div>
