@@ -1,0 +1,40 @@
+.Form_agregado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    flex-wrap: wrap;
+    background-color: black;
+    width: 100%;
+    color: white;
+    border-top: 2px solid var(--decoraciones);
+    border-bottom: 2px solid var(--decoraciones);
+}
+
+.Form_agregado_inputs_container {
+    margin: 20px;
+    width: 200px;
+}
+
+.Form_agregado_inputs {
+    border: 2px solid var(--decoraciones);
+    background-color: white;
+    width: 100%;
+    color: black;
+    font-weight: bold;
+}
+
+.Form_inputs_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 70%;
+}
+
+@media (max-width: 975px) {
+    .form_agregado{
+flex-direction: column;
+    }
+}
