@@ -1,7 +1,28 @@
 .individual_container {
-    margin-top: -40px;
+    margin-top: 120px;
     text-transform: capitalize;
 }
+
+.filter_spinner_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 150px 0px 0px 120px !important;
+}
+
+.filter_spinner {
+    width: 100px;
+    height: 100px;
+}
+
+.filter_spinner_text {
+    text-align: center;
+    font-size: 1.7em;
+    margin-top: 20px;
+    color: white;
+}
+
 
 .individual_content {
     border-bottom: 1px solid var(--decoraciones);

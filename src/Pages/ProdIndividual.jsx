@@ -53,7 +53,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                         cargando
                             ?
                             <div style={{ margin: "auto" }} className='filter_spinner_container'>
-                                <Spinner className='filter_spinner' variant="danger" />
+                                <Spinner className='filter_spinner' variant="warning" />
                                 <p className='filter_spinner_text'>La carga puede llevar un momento...</p>
                             </div>
                             :
@@ -72,7 +72,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                         </div>
                                         <div className='individual_content_right'>
                                             <div className='individual_info'>
-                                                <h1>{products.marca} {products.modelo}</h1>
+                                                <h1>{products.nombre} {products.marca}</h1>
                                                 <h2 style={{ textAlign: "center", color: "green", fontWeight: "bold" }}>$<span style={{ color: "white" }}>{products.precio}</span></h2>
                                             </div>
                                             <div className='individual_items'>

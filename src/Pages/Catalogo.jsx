@@ -1,9 +1,11 @@
 import ProdsCatalogo from '../Components/ProdsCatalogo'
+import ScrollToTop from '../Components/ScrollToTop'
 
 function Catalogo() {
   return (
     <div>
-        <ProdsCatalogo />
+      <ScrollToTop />
+      <ProdsCatalogo />
     </div>
   )
 }
