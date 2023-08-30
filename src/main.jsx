@@ -5,7 +5,8 @@ import axios from "axios";
 import App from './App.jsx'
 import React from 'react';
 
-axios.defaults.baseURL = 'http://localhost:4000/api/';
+//axios.defaults.baseURL = 'http://localhost:4000/api/';
+axios.defaults.baseURL = 'https://backendtaurie.onrender.com/api/';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
