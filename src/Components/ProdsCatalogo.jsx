@@ -20,40 +20,40 @@ function ProdsCatalogo() {
 
     return (
         <>
-        {
-            cargando
-                ?
-                <div style={{ display: "flex", margin: "auto" }} className='filter_spinner_container'>
-                    <Spinner className='filter_spinner m-auto' variant="warning" />
-                    <p className='filter_spinner_text'>La carga puede llevar un momento...</p>
-                </div>
-                :
-                <>
-                    {
-                        <>
-                        <div className='Catalogo-container'>
-                        {products.map((prod) => {
-                            return (
-                                <>
-                                    <div key={prod.id} className='Catalogo-cards'>
-                                    <Link to={`/individual/${prod._id}`} style={{ textDecoration: "none" }}>
-                                        <div className='Card-catalogo'>
-                                            <div className='Catalogo-img'>
-                                                <img src={prod.imgFirst} alt="" />
-                                            </div>
-                                            <h3> {prod.nombre} </h3>
-                                            <p> <span style={{color: "green"}}>$</span>{prod.precio} </p>
-                                        </div>
-                                        </Link>
-                                    </div>
-                                </>
-                            )
-                        })}
+            {
+                cargando
+                    ?
+                    <div style={{ margin: "auto" }} className='filter_spinner_container'>
+                        <Spinner className='filter_spinner m-auto' variant="warning" />
+                        <p className='filter_spinner_text'>La carga puede llevar un momento...</p>
                     </div>
-                        </>
-                    }
-                </>
-        }
+                    :
+                    <>
+                        {
+                            <>
+                                <div className='Catalogo-container'>
+                                    {products.map((prod) => {
+                                        return (
+                                            <>
+                                                <div key={prod.id} className='Catalogo-cards'>
+                                                    <Link to={`/individual/${prod._id}`} style={{ textDecoration: "none" }}>
+                                                        <div className='Card-catalogo'>
+                                                            <div className='Catalogo-img'>
+                                                                <img src={prod.imgFirst} alt="" />
+                                                            </div>
+                                                            <h3> {prod.nombre} </h3>
+                                                            <p> <span style={{ color: "green" }}>$</span>{prod.precio} </p>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            </>
+                                        )
+                                    })}
+                                </div>
+                            </>
+                        }
+                    </>
+            }
         </>
     )
 }

@@ -40,6 +40,7 @@ function NavB({
                 setToken(data.token);
                 Navigate('/');
                 setCargando(false);
+                handleCloseRegister();
             } else {
                 window.alert("Password no coinciden");
             }
@@ -47,7 +48,7 @@ function NavB({
             error.response.data.msg
                 ? setAlert(error.response.data.msg[0].msg)
                 : setAlert(error.response.data);
-                setCargando(false); 
+            setCargando(false);
         }
     };
 
@@ -73,12 +74,13 @@ function NavB({
             localStorage.setItem("token", JSON.stringify(data));
             setToken(data.token);
             Navigate('/');
+            location.reload();
             setCargando(false);
         } catch (error) {
             error.response.data.msg[0].msg
                 ? setAlert(error.response.data.msg[0].msg)
                 : setAlert(error.response.data.msg);
-                setCargando(false);
+            setCargando(false);
         }
     };
 
@@ -86,6 +88,10 @@ function NavB({
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
 
+    const handleOpenClose = () => {
+        handleShowRegister();
+        handleCloseLogin();
+    }
 
     const handleCloseRegister = () => setShowRegister(false);
     const handleShowRegister = () => setShowRegister(true);
@@ -117,13 +123,13 @@ function NavB({
                                 <img
                                     loading='lazy'
                                     src="https://icongr.am/fontawesome/user.svg?size=35&color=ffffff"
-                                    alt="imagen"
+                                    alt="imagen de logo de perfil"
                                 />{" "}
                             </Nav.Link>
                         )}
                         {userName && (
                             <>
-                                <img loading='lazy' style={{ cursor: "pointer" }} className='Nav-item p-3 ms-3' onClick={handleShow} src="https://icongr.am/entypo/heart.svg?size=40&color=ffffff" alt="Imagen de corazon referente a productos favoritos" />
+                                <Button variant='none' style={{ cursor: "pointer" }} className='Nav-item p-3 ms-3 mx-auto'  onClick={handleShow}><img loading='lazy'src="https://icongr.am/entypo/heart.svg?size=40&color=ffffff" alt="Imagen de corazon referente a productos favoritos" /></Button>
                                 <Modal style={{ color: "white" }} show={show} onHide={handleClose}>
                                     <Modal.Header style={{ backgroundColor: "black", border: "1px solid var(--decoraciones)" }} closeButton>
                                         <Modal.Title>Productos favoritos</Modal.Title>
@@ -150,7 +156,7 @@ function NavB({
                         )}
                         {!userName && (
                             <>
-                                <img loading='lazy' style={{ cursor: "pointer" }} className='Nav-item p-3 mx-3' onClick={handleShowLogin} src="https://icongr.am/clarity/login.svg?size=40&color=ffffff" alt="Imagen de corazon referente a productos favoritos" />
+                            <Button variant='none' style={{ cursor: "pointer" }} className='Nav-item p-3 ms-3 mx-auto' onClick={handleShowLogin}><img loading='lazy' src="https://icongr.am/clarity/login.svg?size=40&color=ffffff" alt="Imagen de entrada referente al login" /></Button>
                                 <Modal style={{ color: "white" }} show={showLogin} onHide={handleCloseLogin}>
                                     <Modal.Header style={{ backgroundColor: "black", border: "1px solid var(--decoraciones)" }} closeButton>
                                         <Modal.Title style={{ fontWeight: "bold" }}>Login</Modal.Title>
@@ -193,7 +199,7 @@ function NavB({
                                                 }
                                             </Button>
                                             <Row>
-                                                <Button variant='warning' onClick={handleShowRegister} style={{ color: "var(--decoraciones)", fontSize: "bold", width: "300px", backgroundColor: "black" }} className="m-auto mt-3">
+                                                <Button variant='warning' onClick={handleOpenClose} style={{ color: "var(--decoraciones)", fontSize: "bold", width: "300px", backgroundColor: "black" }} className="m-auto mt-3">
                                                     ¿No tienes una cuenta? Registrate!
                                                 </Button >
                                             </Row>
@@ -208,8 +214,8 @@ function NavB({
                             </>
                         )}
                         {userName && (
-                            <Button className='Nav-item p-3 ms-3' variant='none' onClick={logout} >
-                                <img src="https://icongr.am/clarity/logout.svg?size=40&color=ffffff" alt="" />
+                            <Button className='Nav-item p-3 ms-3 mx-auto' variant='none' onClick={logout} >
+                                <img src="https://icongr.am/clarity/logout.svg?size=40&color=ffffff" alt="Imagen de salida referente a Log out" />
                             </Button>
                         )}
 
@@ -231,7 +237,7 @@ function NavB({
                                             type="text"
                                             placeholder="Juanma"
                                             maxLength="25"
-                                            minLength="6"
+                                            minLength="4"
                                             className="input_contact"
                                         />
                                         <Form.Control.Feedback>Ok!</Form.Control.Feedback>

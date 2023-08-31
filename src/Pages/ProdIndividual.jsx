@@ -20,7 +20,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
         const producto = async () => {
             const { data } = await axios.get(`productos/${id}`);
             setproducts(data);
-            setCargando(false);
+            setCargando(true);
         }
         producto()
     }, [id])
