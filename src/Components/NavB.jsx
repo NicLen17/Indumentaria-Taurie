@@ -129,7 +129,16 @@ function NavB({
                         )}
                         {userName && (
                             <>
-                                <Button variant='none' style={{ cursor: "pointer" }} className='Nav-item p-3 ms-3 mx-auto' onClick={handleShow}><img loading='lazy' src="https://icongr.am/entypo/heart.svg?size=40&color=ffffff" alt="Imagen de corazon referente a productos favoritos" /></Button>
+                                {
+                                    favorito.length === 0 && (
+                                        <Button variant='none' style={{ cursor: "pointer" }} className='Nav-item p-3 ms-3 mx-auto' onClick={handleShow}><img loading='lazy' src="https://icongr.am/entypo/heart.svg?size=40&color=ffffff" alt="Imagen de corazon referente a productos favoritos" /></Button>
+                                    )
+                                }
+                                {
+                                    favorito.length > 0 && (
+                                        <Button variant='none' style={{ cursor: "pointer", position:"relative" }} className='Nav-item p-3 ms-3 mx-auto' onClick={handleShow}><img loading='lazy' src="https://icongr.am/entypo/heart.svg?size=40&color=ff0000 " alt="Imagen de corazon referente a productos favoritos" /> <p style={{ top: "0px", position: "absolute", right: "0"}}> {favorito.length} </p> </Button>
+                                    )
+                                }
                                 <Modal style={{ color: "white" }} show={show} onHide={handleClose}>
                                     <Modal.Header style={{ backgroundColor: "black", border: "1px solid var(--decoraciones)" }} closeButton>
                                         <Modal.Title>Productos favoritos</Modal.Title>
@@ -141,7 +150,7 @@ function NavB({
                                         {
                                             favorito.map((fav) => (
                                                 <div style={{ border: "1px solid var(--decoraciones)", margin: "10px 10px 10px 10px", boxShadow: "0px 0px 10px var(--decoraciones)" }} key={fav.id}>
-                                                    <div style={{ textTransform: "capitalize", marginBottom: "0px", display:"flex", justifyContent: "space-around", alignItems: "center" }}> <img style={{ border: "1px solid var(--decoraciones)", margin: "10px" }} width={100} src={fav.imgFirst} alt="" /> {fav.modelo} {fav.marca} <Button variant='danger' onClick={() => eliminarFavorito(fav._id)}>Eliminar</Button>  <Nav.Link as={NavLink} to={`/individual/${fav._id}`}><Button onClick={handleClose} variant='primary'>Ver</Button></Nav.Link> </div>
+                                                    <div style={{ textTransform: "capitalize", marginBottom: "0px", display: "flex", justifyContent: "space-around", alignItems: "center" }}> <img style={{ border: "1px solid var(--decoraciones)", margin: "10px" }} width={100} src={fav.imgFirst} alt="" /> {fav.modelo} {fav.marca} <Button variant='danger' onClick={() => eliminarFavorito(fav._id)}>Eliminar</Button>  <Nav.Link as={NavLink} to={`/individual/${fav._id}`}><Button onClick={handleClose} variant='primary'>Ver</Button></Nav.Link> </div>
                                                 </div>
                                             ))
                                         }

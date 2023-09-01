@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useRef } from 'react';
+import { DownloadTableExcel } from 'react-export-table-to-excel';
 import axios from "axios";
 import {
     Tabs,
@@ -18,6 +20,7 @@ import AgregadoProducto from '../Components/AgregadoProducto';
 import ScrollToTop from '../Components/ScrollToTop'
 
 function Admin() {
+    const tableRef = useRef(null);
     const Navigate = useNavigate();
     const localToken = JSON.parse(localStorage.getItem("token"))?.token || "";
     const token = localToken;
@@ -256,10 +259,19 @@ function Admin() {
                         <div>
                             <AgregadoProducto productos={productos} />
                             {alertSuccess && <Alert variant="success">{alertSuccess}</Alert>}
-                            <Table className="tabla_admin" responsive striped bordered hover variant="dark">
+                            <DownloadTableExcel
+                                filename="Tabla productos Indumentaria Taurie"
+                                sheet="users"
+                                currentTableRef={tableRef.current}
+                            >
+
+                                <Button variant="success " className="mb-5 p-3">Descargar excel</Button>
+
+                            </DownloadTableExcel>
+                            <Table ref={tableRef} className="tabla_admin" responsive striped bordered hover variant="dark">
                                 <thead>
                                     <tr>
-                                    <th>Codigo</th>
+                                        <th>Codigo</th>
                                         <th>Precio</th>
                                         <th>Categoria</th>
                                         <th>Nombre</th>
@@ -280,7 +292,7 @@ function Admin() {
                                                 <td>
                                                     <img loading='lazy' style={{ width: "150px", height: "120px", borderRadius: "10px", objectFit: "cover", border: "1px solid var(--decoraciones)" }} src={product.imgFirst} alt="" />
                                                 </td>
-                                                <td style={{padding:"10px"}}>
+                                                <td style={{ padding: "10px" }}>
                                                     <button
                                                         style={{ width: "90px", margin: "10px" }}
                                                         className="btn btn-warning mr-1"
@@ -745,7 +757,7 @@ function Admin() {
                         <Modal.Header style={{ backgroundColor: "darkgrey", color: "white", border: "1px solid var(--decoraciones)", fontWeight: "bold" }} className="form_agregado" closeButton>
                             <Modal.Title className="Form-titulos">Datos del producto:</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body style={{border: "1px solid var(--decoraciones)", fontWeight: "bold"}} className="form_agregado">
+                        <Modal.Body style={{ border: "1px solid var(--decoraciones)", fontWeight: "bold" }} className="form_agregado">
                             <div style={{ display: "flex", flexDirection: "column" }}>
                                 Nombre: {productEncontrado.nombre}
                                 <br />
@@ -765,7 +777,7 @@ function Admin() {
                                 <br />
                             </div>
                         </Modal.Body>
-                        <Modal.Footer style={{border: "1px solid var(--decoraciones)", backgroundColor: "black"}} className="form_agregado">
+                        <Modal.Footer style={{ border: "1px solid var(--decoraciones)", backgroundColor: "black" }} className="form_agregado">
                             <Button variant="warning" className="Editar-boton" onClick={handleClose4}>
                                 Cerrar
                             </Button>
