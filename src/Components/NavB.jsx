@@ -150,7 +150,7 @@ function NavB({
                                         {
                                             favorito.map((fav) => (
                                                 <div style={{ border: "1px solid var(--decoraciones)", margin: "10px 10px 10px 10px", boxShadow: "0px 0px 10px var(--decoraciones)" }} key={fav.id}>
-                                                    <div style={{ textTransform: "capitalize", marginBottom: "0px", display: "flex", justifyContent: "space-around", alignItems: "center" }}> <img style={{ border: "1px solid var(--decoraciones)", margin: "10px" }} width={100} src={fav.imgFirst} alt="" /> {fav.modelo} {fav.marca} <Button variant='danger' onClick={() => eliminarFavorito(fav._id)}>Eliminar</Button>  <Nav.Link as={NavLink} to={`/individual/${fav._id}`}><Button onClick={handleClose} variant='primary'>Ver</Button></Nav.Link> </div>
+                                                    <div style={{ textTransform: "capitalize", marginBottom: "0px", display: "flex", justifyContent: "space-evenly", alignItems: "center" }}> <img style={{ border: "1px solid var(--decoraciones)", margin: "10px" }} width={100} src={fav.imgFirst} alt={fav.nombre} /> {fav.nombre} {fav.marca} <Nav.Link as={NavLink} to={`/individual/${fav._id}`}><Button onClick={handleClose} variant='primary'>Ver</Button></Nav.Link> <Button variant='danger' onClick={() => eliminarFavorito(fav._id)}> <img width={25} src="https://icongr.am/clarity/window-close.svg?size=128&color=currentColor" alt="Imagen de cruz de cierre" /> </Button> </div>
                                                 </div>
                                             ))
                                         }
