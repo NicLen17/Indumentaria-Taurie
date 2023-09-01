@@ -12,7 +12,7 @@ function PopularProd() {
     <>
       <h1 style={{ color: "white", textAlign: "center", margin: "-50px 0px 60px 0px", textShadow: "white 1px 0 15px", fontSize: "3rem" }}>Categorias Populares</h1>
       <div className="Popular-container">
-        <Link as={NavLink} style={{textDecoration: "none"}} to={"/productos"}>
+        <Link data-aos="fade-down" data-aos-delay="200" data-aos-once="true" data-aos-duration="800"  as={NavLink} style={{ textDecoration: "none" }} to={"/productos"}>
           <Card className='Popular-card' style={{ width: '22rem' }}>
             <Card.Img variant="top" className='Popular-card-img' src={BuzoN} />
             <Card.Body>
@@ -21,7 +21,7 @@ function PopularProd() {
           </Card>
         </Link>
 
-        <Link as={NavLink} style={{textDecoration: "none"}} to={"/productos"}>
+        <Link data-aos="fade-down" data-aos-delay="300" data-aos-once="true" data-aos-duration="800" as={NavLink} style={{ textDecoration: "none" }} to={"/productos"}>
           <Card className='Popular-card' style={{ width: '22rem' }}>
             <Card.Img variant="top" className='Popular-card-img' src={Remera} />
             <Card.Body>
@@ -30,7 +30,7 @@ function PopularProd() {
           </Card>
         </Link>
 
-        <Link as={NavLink} style={{textDecoration: "none"}} to={"/productos"}>
+        <Link data-aos="fade-down" data-aos-delay="400" data-aos-once="true" data-aos-duration="800" as={NavLink} style={{ textDecoration: "none" }} to={"/productos"}>
           <Card className='Popular-card' style={{ width: '22rem' }}>
             <Card.Img variant="top" className='Popular-card-img' src={Canguro} />
             <Card.Body>
@@ -39,7 +39,7 @@ function PopularProd() {
           </Card>
         </Link>
 
-        <Link as={NavLink} style={{textDecoration: "none"}} to={"/productos"}>
+        <Link data-aos="fade-down" data-aos-delay="500" data-aos-once="true" data-aos-duration="800" as={NavLink} style={{ textDecoration: "none" }} to={"/productos"}>
           <Card className='Popular-card' style={{ width: '22rem' }}>
             <Card.Img variant="top" className='Popular-card-img' src={Accesorios} />
             <Card.Body>

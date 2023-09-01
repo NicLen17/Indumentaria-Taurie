@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 function Carousel() {
     return (
-        <div className="Carousel-container">
+        <div     data-aos-duration="1000" data-aos="fade-up" data-aos-once="true" className="Carousel-container">
             <Swiper
                 pagination={{
                     type: 'progressbar',
@@ -21,7 +21,7 @@ function Carousel() {
                 <SwiperSlide><img src="https://media.istockphoto.com/id/666280498/photo/black-and-white-background-of-many-clothes-hang-in-wardrobe.jpg?s=612x612&w=0&k=20&c=QXXzTkdm8GCmFFEtvwhUJdJnZIPzsVuCzEoVs6RGBCI=" alt="" /></SwiperSlide>
             </Swiper>
             <div className="Card-Row-Container">
-                <div className="Card-Row">
+                <div data-aos="fade-down" data-aos-once="true" className="Card-Row">
                     <h1>Taurie</h1>
                 </div>
             </div>

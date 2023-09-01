@@ -252,7 +252,7 @@ export default function AgregadoProducto({ productos }) {
 
                 </section>
 
-                <Button className="Contact_button mb-4 mt-3" variant='none' type="submit">
+                <Button className="mb-4 mt-3" variant='warning' type="submit">
                     Agregar
                 </Button>
             </Form>

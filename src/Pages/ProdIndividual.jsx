@@ -20,7 +20,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
         const producto = async () => {
             const { data } = await axios.get(`productos/${id}`);
             setproducts(data);
-            setCargando(true);
+            setCargando(false);
         }
         producto()
     }, [id])
@@ -48,13 +48,13 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
         <>
             <ScrollToTop />
             <div className='individual_container'>
-                <div key={products.id} className='individual_content'>
+                <div data-aos="fade-down" data-aos-delay="200" data-aos-once="true" data-aos-duration="1400" key={products.id} className='individual_content'>
                     {
                         cargando
                             ?
                             <div style={{ margin: "auto" }} className='filter_spinner_container'>
                                 <Spinner className='filter_spinner' variant="warning" />
-                                <p className='filter_spinner_text'>La carga puede llevar un momento...</p>
+                                <p className='filter_spinner_text'>Cargando tu producto...</p>
                             </div>
                             :
                             <>

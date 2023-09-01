@@ -35,7 +35,7 @@ function ProdsCatalogo() {
                                     {products.map((prod) => {
                                         return (
                                             <>
-                                                <div key={prod.id} className='Catalogo-cards'>
+                                                <div data-aos="fade-up" data-aos-delay="200" data-aos-once="true" data-aos-duration="1000" key={prod.id} className='Catalogo-cards'>
                                                     <Link to={`/individual/${prod._id}`} style={{ textDecoration: "none" }}>
                                                         <div className='Card-catalogo'>
                                                             <div className='Catalogo-img'>

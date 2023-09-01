@@ -5,7 +5,7 @@ export default function Profile({ user }) {
     return (
         <>
             <ScrollToTop />
-            <div className="perfil_container">
+            <div data-aos="fade-down" data-aos-once="true" data-aos-duration="800" className="perfil_container">
                 <div className='perfil_content'>
                     <div className="Perfil-img-cont">
                         <img loading='lazy' className="perfil_img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="profile" />

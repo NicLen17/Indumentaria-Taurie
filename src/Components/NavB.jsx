@@ -129,7 +129,7 @@ function NavB({
                         )}
                         {userName && (
                             <>
-                                <Button variant='none' style={{ cursor: "pointer" }} className='Nav-item p-3 ms-3 mx-auto'  onClick={handleShow}><img loading='lazy'src="https://icongr.am/entypo/heart.svg?size=40&color=ffffff" alt="Imagen de corazon referente a productos favoritos" /></Button>
+                                <Button variant='none' style={{ cursor: "pointer" }} className='Nav-item p-3 ms-3 mx-auto' onClick={handleShow}><img loading='lazy' src="https://icongr.am/entypo/heart.svg?size=40&color=ffffff" alt="Imagen de corazon referente a productos favoritos" /></Button>
                                 <Modal style={{ color: "white" }} show={show} onHide={handleClose}>
                                     <Modal.Header style={{ backgroundColor: "black", border: "1px solid var(--decoraciones)" }} closeButton>
                                         <Modal.Title>Productos favoritos</Modal.Title>
@@ -141,7 +141,7 @@ function NavB({
                                         {
                                             favorito.map((fav) => (
                                                 <div style={{ border: "1px solid var(--decoraciones)", margin: "10px 10px 10px 10px", boxShadow: "0px 0px 10px var(--decoraciones)" }} key={fav.id}>
-                                                    <p style={{ textTransform: "capitalize", marginBottom: "0px" }}> <img style={{ border: "1px solid var(--decoraciones)", margin: "10px" }} width={100} src={fav.imgFirst} alt="" /> {fav.modelo} {fav.marca} <Button className='m-3' variant='danger' onClick={() => eliminarFavorito(fav._id)}>Eliminar</Button></p>
+                                                    <div style={{ textTransform: "capitalize", marginBottom: "0px", display:"flex", justifyContent: "space-around", alignItems: "center" }}> <img style={{ border: "1px solid var(--decoraciones)", margin: "10px" }} width={100} src={fav.imgFirst} alt="" /> {fav.modelo} {fav.marca} <Button variant='danger' onClick={() => eliminarFavorito(fav._id)}>Eliminar</Button>  <Nav.Link as={NavLink} to={`/individual/${fav._id}`}><Button onClick={handleClose} variant='primary'>Ver</Button></Nav.Link> </div>
                                                 </div>
                                             ))
                                         }
@@ -156,7 +156,7 @@ function NavB({
                         )}
                         {!userName && (
                             <>
-                            <Button variant='none' style={{ cursor: "pointer" }} className='Nav-item p-3 ms-3 mx-auto' onClick={handleShowLogin}><img loading='lazy' src="https://icongr.am/clarity/login.svg?size=40&color=ffffff" alt="Imagen de entrada referente al login" /></Button>
+                                <Button variant='none' style={{ cursor: "pointer" }} className='Nav-item p-3 ms-3 mx-auto' onClick={handleShowLogin}><img loading='lazy' src="https://icongr.am/clarity/login.svg?size=40&color=ffffff" alt="Imagen de entrada referente al login" /></Button>
                                 <Modal style={{ color: "white" }} show={showLogin} onHide={handleCloseLogin}>
                                     <Modal.Header style={{ backgroundColor: "black", border: "1px solid var(--decoraciones)" }} closeButton>
                                         <Modal.Title style={{ fontWeight: "bold" }}>Login</Modal.Title>

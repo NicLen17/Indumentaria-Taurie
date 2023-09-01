@@ -39,8 +39,6 @@ function Admin() {
     const [show4, setShow4] = useState(false);
     const [validated, setValidated] = useState(false);
 
-    const numero = 0.03;
-
     useEffect(() => {
         if (token) {
             const request = async () => {
@@ -157,7 +155,6 @@ function Admin() {
             ...imagenes,
             [name]: value,
         };
-        console.log(productoInput)
         setInput(productoInput);
     };
 
@@ -262,13 +259,11 @@ function Admin() {
                             <Table className="tabla_admin" responsive striped bordered hover variant="dark">
                                 <thead>
                                     <tr>
-                                        <th>Patente</th>
-                                        <th>Ganancia</th>
+                                    <th>Codigo</th>
                                         <th>Precio</th>
                                         <th>Categoria</th>
-                                        <th>Modelo</th>
+                                        <th>Nombre</th>
                                         <th>Marca</th>
-                                        <th>Categoria</th>
                                         <th>Imagen</th>
                                         <th>Funciones</th>
                                     </tr>
@@ -277,26 +272,24 @@ function Admin() {
                                     {
                                         products.map((product) => (
                                             <tr key={product._id}>
-                                                <td>{product.patente}</td>
-                                                <td>${product.precio * numero}</td>
+                                                <td>{product.codigo}</td>
                                                 <td>${product.precio}</td>
-                                                <td>{product.categoria}</td>
-                                                <td>{product.modelo}</td>
+                                                <td>{product.nombre}</td>
                                                 <td>{product.marca}</td>
                                                 <td>{product.categoria}</td>
                                                 <td>
-                                                    <img loading='lazy' style={{ width: "150px", height: "120px", borderRadius: "10px", objectFit: "cover", border: "1px solid red" }} src={product.imgFirst} alt="" />
+                                                    <img loading='lazy' style={{ width: "150px", height: "120px", borderRadius: "10px", objectFit: "cover", border: "1px solid var(--decoraciones)" }} src={product.imgFirst} alt="" />
                                                 </td>
-                                                <td>
+                                                <td style={{padding:"10px"}}>
                                                     <button
-                                                        style={{ width: "90px" }}
+                                                        style={{ width: "90px", margin: "10px" }}
                                                         className="btn btn-warning mr-1"
                                                         onClick={() => datosProducto(product._id)}
                                                     >
                                                         Datos
                                                     </button>
                                                     <button
-                                                        style={{ width: "90px" }}
+                                                        style={{ width: "90px", margin: "10px" }}
                                                         className="btn btn-success mr-1"
                                                         onClick={() => updateProduct(product._id)}
                                                     >
@@ -304,7 +297,7 @@ function Admin() {
                                                     </button>
                                                     <NavLink
                                                         className="btn btn-primary"
-                                                        style={{ textDecorationLine: "none", width: "90px" }}
+                                                        style={{ textDecorationLine: "none", width: "90px", margin: "10px" }}
                                                         to={`/individual/${product._id}`}
                                                         exact
                                                         as={NavLink}
@@ -313,7 +306,7 @@ function Admin() {
                                                     </NavLink>
                                                     <button
                                                         className="btn btn-danger"
-                                                        style={{ textDecorationLine: "none", width: "90px" }}
+                                                        style={{ textDecorationLine: "none", width: "90px", margin: "10px" }}
                                                         onClick={() => deleteProducto(product._id)}
                                                     >
                                                         Eliminar
@@ -411,7 +404,7 @@ function Admin() {
             {
                 <Modal show={show} backdrop="static" keyboard={false}>
                     <Modal.Header
-                        style={{ backgroundColor: "black", border: "1px solid var(--decoraciones)", color: "white" }}
+                        style={{ backgroundColor: "darkgrey", border: "1px solid var(--decoraciones)", color: "white" }}
                         className="Header-edit"
                         closeButton={() => setShow(false)}
                         onClick={() => { setShow(false); setInput({}); setAlert(""); setValidated(false) }}
@@ -749,7 +742,7 @@ function Admin() {
                         backdrop="static"
                         keyboard={false}
                     >
-                        <Modal.Header style={{ backgroundColor: "black", color: "white", border: "1px solid var(--decoraciones)", fontWeight: "bold" }} className="form_agregado" closeButton>
+                        <Modal.Header style={{ backgroundColor: "darkgrey", color: "white", border: "1px solid var(--decoraciones)", fontWeight: "bold" }} className="form_agregado" closeButton>
                             <Modal.Title className="Form-titulos">Datos del producto:</Modal.Title>
                         </Modal.Header>
                         <Modal.Body style={{border: "1px solid var(--decoraciones)", fontWeight: "bold"}} className="form_agregado">

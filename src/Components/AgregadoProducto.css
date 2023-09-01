@@ -9,6 +9,7 @@
     color: white;
     border-top: 2px solid var(--decoraciones);
     border-bottom: 2px solid var(--decoraciones);
+    flex-direction: column;
 }
 
 .Form_agregado_inputs_container {
@@ -31,10 +32,4 @@
     flex-wrap: wrap;
     flex-direction: row;
     width: 70%;
-}
-
-@media (max-width: 975px) {
-    .form_agregado{
-flex-direction: column;
-    }
 }

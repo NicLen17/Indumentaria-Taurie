@@ -3,7 +3,7 @@ import './About.css'
 function About() {
     return (
         <>
-            <div id='about' className="About-container">
+            <div data-aos="fade-down" data-aos-once="true"      data-aos-duration="800"  id='about' className="About-container">
                 <div className="About">
                     <h2 className="About-title">Indumentaria Taurie</h2>
                     <p className="About-description">

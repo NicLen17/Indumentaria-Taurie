@@ -1,7 +1,6 @@
 import Inicio from './Pages/Inicio';
 import Catalogo from './Pages/Catalogo';
 import Admin from './Pages/Admin';
-import Register from './Pages/Register';
 import Profile from './Pages/Profile';
 import ProdIndividual from './Pages/ProdIndividual';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,6 +11,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Error from './Components/Error';
 import Contacto from './Pages/Contacto';
+import ScrollToTop from './Components/ScrollToTop';
 
 const localToken = JSON.parse(localStorage.getItem("token"))?.token || "";
 
@@ -73,7 +73,7 @@ function App() {
             logout={logout}
             favorito={favorito}
             eliminarFavorito={eliminarFavorito}
-            setUser={setUser} 
+            setUser={setUser}
             setToken={setToken}
           />
           <Routes>
@@ -81,12 +81,16 @@ function App() {
             <Route path="/productos" element={<Catalogo />} />
             <Route path="/contact" element={<Contacto />} />
             <Route path="/admin" element={<Admin user={user.nombre} />} />
-            <Route path="/register" element={<Register setToken={setToken} />} />
             <Route path='/perfil' element={<Profile favorito={favorito} user={user} />} />
             <Route path="/individual/:id" element={<ProdIndividual userName={user.nombre} favorito={favorito} setFavorito={setFavorito} />} />
             <Route path="/*" element={<Error />} />
           </Routes>
-          <Footer />
+          <Footer
+            userName={user.nombre}
+            logout={logout}
+            setUser={setUser}
+            setToken={setToken}
+          />
         </HashRouter>
       </div>
     </>
