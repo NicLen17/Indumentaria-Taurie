@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Error from './Components/Error';
 import Contacto from './Pages/Contacto';
-import ScrollToTop from './Components/ScrollToTop';
+import { Analytics } from '@vercel/analytics/react';
 
 const localToken = JSON.parse(localStorage.getItem("token"))?.token || "";
 
@@ -92,6 +92,7 @@ function App() {
             setToken={setToken}
           />
         </HashRouter>
+        <Analytics />
       </div>
     </>
   )
