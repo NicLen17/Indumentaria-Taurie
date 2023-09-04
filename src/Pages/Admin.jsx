@@ -18,6 +18,7 @@ import "./Admin.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import AgregadoProducto from '../Components/AgregadoProducto';
 import ScrollToTop from '../Components/ScrollToTop'
+import { getBase64 } from "../utils/img";
 
 function Admin() {
     const tableRef = useRef(null);
@@ -149,6 +150,17 @@ function Admin() {
         }
         productos();
     };
+
+    const onChangeImg = async (e) => {
+        const imagenesArray = [];
+        const imagenesInput = e.target.files;
+        for (let i = 0; i < imagenesInput.length; i++) {
+            const base64 = await getBase64(imagenesInput[i]);
+            imagenesArray.push(base64);
+            const imagenSubida = { img: imagenesArray }
+            setImagenes(imagenSubida);
+        }
+    }
 
     const handleChange = (e) => {
         setAlert("");
@@ -290,7 +302,7 @@ function Admin() {
                                                 <td>{product.marca}</td>
                                                 <td>{product.categoria}</td>
                                                 <td>
-                                                    <img loading='lazy' style={{ width: "150px", height: "120px", borderRadius: "10px", objectFit: "cover", border: "1px solid var(--decoraciones)" }} src={product.imgFirst} alt="" />
+                                                    <img loading='lazy' style={{ width: "150px", height: "120px", objectFit: "cover"}} src={product.img[0]} alt="" />
                                                 </td>
                                                 <td style={{ padding: "10px" }}>
                                                     <button
@@ -569,80 +581,12 @@ function Admin() {
                                         </Form.Control.Feedback>
                                         <Form.Control.Feedback>Recibido</Form.Control.Feedback>
                                     </Form.Group>
-
-                                    <Form.Group controlId="formFile">
-                                        <Form.Label>Imagen principal (URL)</Form.Label>
-                                        <InputGroup hasValidation>
-                                            <Form.Control
-                                                className='Form_agregado_inputs  m-2'
-                                                name="imgFirst"
-                                                onChange={(e) => handleChange(e)}
-                                                type="url"
-                                                placeholder="url de la imagen"
-                                                aria-describedby="inputGroupPrepend"
-                                                required
-                                                defaultValue={productEncontrado.imgFirst}
-                                            />
-                                            <Form.Control.Feedback type="invalid">
-                                                La imagen es obligaroria!
-                                            </Form.Control.Feedback>
-                                        </InputGroup>
+                                    <Form.Group controlId="formFile" className="mb-3">
+                                        <Form.Label>Agregar imagen del producto de forma local</Form.Label>
+                                        <Form.Group className="Form_agregado_inputs mt-3" controlId="formFileMultiple" onChange={(e) => onChangeImg(e)}>
+                                            <Form.Control type="file" multiple />
+                                        </Form.Group>
                                     </Form.Group>
-
-                                    <Form.Group controlId="formFile">
-                                        <Form.Label>Img secundaria (opc)</Form.Label>
-                                        <InputGroup hasValidation>
-                                            <Form.Control
-                                                className='Form_agregado_inputs  m-2'
-                                                name="imgSecond"
-                                                onChange={(e) => handleChange(e)}
-                                                type="url"
-                                                placeholder="url de la imagen"
-                                                aria-describedby="inputGroupPrepend"
-                                                defaultValue={productEncontrado.imgSecond}
-                                            />
-                                            <Form.Control.Feedback type="invalid">
-                                                La imagen es obligaroria!
-                                            </Form.Control.Feedback>
-                                        </InputGroup>
-                                    </Form.Group>
-
-                                    <Form.Group controlId="formFile">
-                                        <Form.Label>Img secundaria (opc)</Form.Label>
-                                        <InputGroup hasValidation>
-                                            <Form.Control
-                                                className='Form_agregado_inputs  m-2'
-                                                name="imgThird"
-                                                onChange={(e) => handleChange(e)}
-                                                type="url"
-                                                placeholder="url de la imagen"
-                                                aria-describedby="inputGroupPrepend"
-                                                defaultValue={productEncontrado.imgThird}
-                                            />
-                                            <Form.Control.Feedback type="invalid">
-                                                La imagen es obligaroria!
-                                            </Form.Control.Feedback>
-                                        </InputGroup>
-                                    </Form.Group>
-
-                                    <Form.Group controlId="formFile">
-                                        <Form.Label>Img secundaria (opc)</Form.Label>
-                                        <InputGroup hasValidation>
-                                            <Form.Control
-                                                className='Form_agregado_inputs m-2'
-                                                name="imgFourth"
-                                                onChange={(e) => handleChange(e)}
-                                                type="url"
-                                                placeholder="url de la imagen"
-                                                aria-describedby="inputGroupPrepend"
-                                                defaultValue={productEncontrado.imgFourth}
-                                            />
-                                            <Form.Control.Feedback type="invalid">
-                                                La imagen es obligaroria!
-                                            </Form.Control.Feedback>
-                                        </InputGroup>
-                                    </Form.Group>
-
                                 </section>
 
                                 <div className="d-flex flex-wrap">

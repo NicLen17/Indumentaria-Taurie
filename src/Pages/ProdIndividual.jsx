@@ -62,7 +62,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                     <>
                                         <div className='individual_content_left'>
                                             <div className='indivudual_img'>
-                                                <img loading='lazy' src={products.imgFirst} alt={products.nombre} />
+                                                <img loading='lazy' src={products.img[0]} alt={products.nombre} />
                                             </div>
                                             {/* <div className='individual_galery'>
                                                 <img loading='lazy' src={products.imgSecond} />
