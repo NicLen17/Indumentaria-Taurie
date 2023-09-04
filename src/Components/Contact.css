@@ -9,7 +9,7 @@
 }
 
 .Contact-element{
-    background-image: url("https://img.freepik.com/fotos-premium/patron-fondo-abstracto-textura-marmol-negro-diseno_158502-344.jpg");
+    background-image: url('../img/Background.webp');
     width: 450px;
     height: 450px;
     border: 2px solid var(--decoraciones);

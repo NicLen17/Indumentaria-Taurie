@@ -1,0 +1,60 @@
+.Search-container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px !important;
+    margin: auto;
+    background-image: url("../img/Background.webp");
+    border: var(--decoraciones) 2px solid;
+    height: 100px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px var(--decoraciones);
+}
+
+.SearchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 50px;
+}
+
+.SearchBar input {
+    height: 100%;
+    width: 100%;
+    border: 2px solid var(--decoraciones);
+    border-radius: 15px;
+}
+
+.SearchBar button {
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    margin-left: -45px;
+    border: 1px solid var(--decoraciones);
+    box-shadow: 0px 0px 10px black;
+    transition: 0.2s ease-in;
+}
+
+.SearchBar button:hover {
+    background-color: var(--decoraciones);
+}
+
+@media screen and (max-width: 500px) {
+    .Search-container {
+        width: 100%;
+        border-left: none;
+        border-right: none;
+        border-radius: 0px;
+        margin-top: -10px !important;
+        position: fixed;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .SearchBar button {
+        width: 50px;
+        height: 50px;
+    }
+}

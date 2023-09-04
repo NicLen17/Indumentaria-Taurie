@@ -24,7 +24,8 @@
     height: 400px;
     border: var(--decoraciones) 2px solid;
     box-shadow: 0 0 10px var(--decoraciones);
-    background-color: black;
+    background-image: url('../img/Background.webp');
+    background-position: right;
     margin: 20px;
     transition: 0.2s;
 }
@@ -32,11 +33,15 @@
 .Card-catalogo h3 {
     text-align: center;
     color: white;
+    text-shadow: white 1px 0 10px;
+    font-weight: bold;
 }
 
 .Card-catalogo p {
     color: gray;
-    text-align: center  ;
+    text-align: center;
+    text-shadow: white 1px 0 10px;
+    font-weight: bold;
 }
 
 .Catalogo-img {
@@ -55,6 +60,13 @@
 .Card-catalogo:hover {
     transform: translateY(-15px);
     box-shadow: 0px 10px 15px rgba(255, 255, 255, 0.436);
+}
+
+.Search-title {
+    text-align: center;
+    color: white;
+    margin-top: 55px;
+    margin-bottom: -25px;
 }
 
 .filter_spinner_container {
@@ -77,6 +89,11 @@
     color: white;
 }
 
+@media screen and (max-width: 1415px) {
+    .Catalogo-cards {
+        margin-top: 55px !important;
+    }
+}
 
 @media screen and (max-width: 1415px) {
     .filter_spinner_container {
@@ -88,5 +105,11 @@
 @media screen and (max-width: 990px) {
     .filter_spinner_container {
         margin: 50px 0px 0px 0px !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Search-title {
+        display: none;
     }
 }

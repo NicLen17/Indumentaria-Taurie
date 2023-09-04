@@ -13,7 +13,7 @@
     flex-wrap: wrap;
     width: 100%;
     margin-top: 50px;
-    background-color: black;
+    background-image: url("../img/Background.webp");
     flex-wrap: wrap;
     flex-direction: row !important;
     padding-top: 50px;
@@ -61,7 +61,7 @@
     transform: scale(1.2);
 }
 
-.individual_content_right Button{
+.individual_content_right Button {
     border: 1px solid var(--decoraciones);
     background-color: black;
     color: white;
@@ -71,7 +71,7 @@
     margin-top: 20px;
 }
 
-.individual_content_right Button:hover{
+.individual_content_right Button:hover {
     border: 1px solid var(--decoraciones);
     box-shadow: 0px 0px 10px var(--decoraciones);
 }

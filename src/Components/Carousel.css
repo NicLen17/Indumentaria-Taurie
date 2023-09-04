@@ -15,7 +15,7 @@
     border-radius: 15px;
     box-shadow: 0px 0px 10px var(--decoraciones);
     padding: 25px;
-    background-image: url("https://img.freepik.com/fotos-premium/patron-fondo-abstracto-textura-marmol-negro-diseno_158502-344.jpg");
+    background-image: url('../img/Background.webp');
     border: 2px solid var(--decoraciones);
 }
 
@@ -39,7 +39,7 @@
     justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
-    background-image: url("https://img.freepik.com/fotos-premium/patron-fondo-abstracto-textura-marmol-negro-diseno_158502-344.jpg");
+    background-image: url('../img/Background.webp');
     border: 2px solid var(--decoraciones);
     width: 30%;
     height: 120px;

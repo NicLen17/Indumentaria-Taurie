@@ -9,7 +9,7 @@
     font-size: 20px;
     bottom: 0px;
     border-top: 3px solid var(--decoraciones);
-    background-image: url("https://img.freepik.com/fotos-premium/patron-fondo-abstracto-textura-marmol-negro-diseno_158502-344.jpg");
+    background-image: url('../img/Background.webp');
 }
 
 .items-footer {

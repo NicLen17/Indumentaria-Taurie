@@ -11,7 +11,7 @@
     margin: auto;
     flex-wrap: wrap;
     text-align: center;
-    background-image: url("https://img.freepik.com/fotos-premium/patron-fondo-abstracto-textura-marmol-negro-diseno_158502-344.jpg");
+    background-image: url('../img/Background.webp');
     width: 80%;
     padding: 80px;
     border-radius: 15px;
