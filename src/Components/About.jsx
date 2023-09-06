@@ -1,8 +1,10 @@
 import './About.css'
+import ScrollToTop from './ScrollToTop'
 
 function About() {
     return (
         <>
+            <ScrollToTop />
             <div data-aos="fade-down" data-aos-once="true"      data-aos-duration="800"  id='about' className="About-container">
                 <div className="About">
                     <h2 className="About-title">Indumentaria Taurie</h2>

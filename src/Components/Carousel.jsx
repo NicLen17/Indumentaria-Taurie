@@ -1,19 +1,20 @@
 import 'swiper/css';
 import './Carousel.css'
-import { Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 function Carousel() {
     return (
-        <div     data-aos-duration="1000" data-aos="fade-up" data-aos-once="true" className="Carousel-container">
+        <div data-aos-duration="1000" data-aos="fade-up" data-aos-once="true" data-aos-delay="100" className="Carousel-container">
             <Swiper
                 pagination={{
                     type: 'progressbar',
                 }}
+                autoplay
                 spaceBetween={30}
                 loop={true}
                 navigation={true}
-                modules={[Pagination, Navigation]}
+                modules={[Pagination, Navigation, Autoplay]}
                 className="Carousel"
             >
                 <SwiperSlide><img src="https://st2.depositphotos.com/1001094/11030/i/450/depositphotos_110301622-Young-sensual--beauty-woman-in-casual-clothes-pose-on-grunge-wooden-background.-Black-white-fashion-photo..jpg" alt="" /></SwiperSlide>
