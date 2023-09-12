@@ -14,7 +14,7 @@ function PopularProd() {
       <div className="Popular-container">
         <Link data-aos="fade-down" data-aos-delay="200" data-aos-once="true" data-aos-duration="800"  as={NavLink} style={{ textDecoration: "none" }} to={"/productos/hoodies"}>
           <Card className='Popular-card' style={{ width: '22rem' }}>
-            <Card.Img variant="top" className='Popular-card-img' src={HoodieV} />
+            <Card.Img variant="top" className='Popular-card-img' src={CanguroN} />
             <Card.Body>
               <Card.Title className='Popular-card-title'>Hoodies</Card.Title>
             </Card.Body>
@@ -32,7 +32,7 @@ function PopularProd() {
 
         <Link data-aos="fade-down" data-aos-delay="400" data-aos-once="true" data-aos-duration="800" as={NavLink} style={{ textDecoration: "none" }} to={"/productos/canguros"}>
           <Card className='Popular-card' style={{ width: '22rem' }}>
-            <Card.Img variant="top" className='Popular-card-img' src={CanguroN} />
+            <Card.Img variant="top" className='Popular-card-img' src={HoodieV} />
             <Card.Body>
               <Card.Title className='Popular-card-title'>Canguros</Card.Title>
             </Card.Body>
