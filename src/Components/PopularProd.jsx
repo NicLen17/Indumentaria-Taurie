@@ -1,8 +1,8 @@
 import './PopularProd.css'
 import { Card } from 'react-bootstrap';
 import Remera from '../img/Remera.webp';
-import Hoodie from '../img/Hoodie.webp';
-import Canguro from '../img/Canguro.webp';
+import HoodieV from '../img/HoodieV.png';
+import CanguroN from '../img/CanguroN.png';
 import Accesorios from '../img/Accesorios.webp';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ function PopularProd() {
       <div className="Popular-container">
         <Link data-aos="fade-down" data-aos-delay="200" data-aos-once="true" data-aos-duration="800"  as={NavLink} style={{ textDecoration: "none" }} to={"/productos/hoodies"}>
           <Card className='Popular-card' style={{ width: '22rem' }}>
-            <Card.Img variant="top" className='Popular-card-img' src={Canguro} />
+            <Card.Img variant="top" className='Popular-card-img' src={HoodieV} />
             <Card.Body>
               <Card.Title className='Popular-card-title'>Hoodies</Card.Title>
             </Card.Body>
@@ -32,7 +32,7 @@ function PopularProd() {
 
         <Link data-aos="fade-down" data-aos-delay="400" data-aos-once="true" data-aos-duration="800" as={NavLink} style={{ textDecoration: "none" }} to={"/productos/canguros"}>
           <Card className='Popular-card' style={{ width: '22rem' }}>
-            <Card.Img variant="top" className='Popular-card-img' src={Hoodie} />
+            <Card.Img variant="top" className='Popular-card-img' src={CanguroN} />
             <Card.Body>
               <Card.Title className='Popular-card-title'>Canguros</Card.Title>
             </Card.Body>
