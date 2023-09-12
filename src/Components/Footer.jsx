@@ -322,19 +322,19 @@ export default function Footer({
                 </div>
                 <div className="footer-right">
                     <div className='footer-paid'>
+                    <OverlayTrigger
+                            placement="top"
+                            delay={{ show: 120, hide: 400 }}
+                            overlay={mercadoPago}
+                        >
+                            <li className='footer-paid-element'><img style={{ width: "50px"}} src={MercadoPago} alt="" /></li>
+                        </OverlayTrigger>
                         <OverlayTrigger
                             placement="top"
                             delay={{ show: 120, hide: 400 }}
                             overlay={toolTipCredito}
                         >
                             <li className='footer-paid-element'><img src="https://icongr.am/clarity/credit-card.svg?size=50&color=000000" alt="" /></li>
-                        </OverlayTrigger>
-                        <OverlayTrigger
-                            placement="top"
-                            delay={{ show: 120, hide: 400 }}
-                            overlay={mercadoPago}
-                        >
-                            <li className='footer-paid-element'><img style={{ width: "50px"}} src={MercadoPago} alt="" /></li>
                         </OverlayTrigger>
                         <OverlayTrigger
                             placement="top"

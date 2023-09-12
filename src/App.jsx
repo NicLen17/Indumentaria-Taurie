@@ -12,6 +12,8 @@ import axios from 'axios';
 import Error from './Components/Error';
 import Contacto from './Pages/Contacto';
 import { Analytics } from '@vercel/analytics/react';
+import ProdsHoodies from './Components/ProdsHoodies';
+import ProdsBuzos from './Components/ProdsBuzos';
 
 const localToken = JSON.parse(localStorage.getItem("token"))?.token || "";
 
@@ -79,6 +81,8 @@ function App() {
           <Routes>
             <Route index element={<Inicio />} />
             <Route path="/productos" element={<Catalogo />} />
+            <Route path="/productos/hoodies" element={<ProdsHoodies />} />
+            <Route path="/productos/canguros" element={<ProdsBuzos />} />
             <Route path="/contact" element={<Contacto />} />
             <Route path="/admin" element={<Admin user={user.nombre} />} />
             <Route path='/perfil' element={<Profile favorito={favorito} user={user} />} />

@@ -4,8 +4,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import SearchaBar from './SearchaBar';
+import ScrollToTop from './ScrollToTop';
 
-function ProdsCatalogo() {
+function ProdsHoodies() {
 
     const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState([]);
@@ -52,26 +53,31 @@ function ProdsCatalogo() {
 
     return (
         <>
+            <ScrollToTop />
             {
                 cargando
                     ?
                     <div style={{ margin: "auto" }} className='filter_spinner_container'>
                         <Spinner className='filter_spinner m-auto' variant="warning" />
-                        <p className='filter_spinner_text'>Cargando productos...</p>
+                        <p className='filter_spinner_text'>Cargando buzos...</p>
                     </div>
                     :
                     <>
                         {
                             <>
-                            <SearchaBar limpiar={limpiar} onSearch={onSearch} handleBusqueda={handleBusqueda} busqueda={busqueda} />
-                            {
-                busqueda && (
-                    <h2 className='Search-title'>Buscando productos: <span style={{ color: "var(--decoraciones)" }}>{busqueda}</span></h2>
-                )
-            }
+                                <SearchaBar limpiar={limpiar} onSearch={onSearch} handleBusqueda={handleBusqueda} busqueda={busqueda} />
+                                {
+                                    busqueda && (
+                                        <h2 className='Search-title'>Buscando productos: <span style={{ color: "var(--decoraciones)" }}>{busqueda}</span></h2>
+                                    )
+                                }
+                                <div className='Category-section'>
+                                    <h1 data-aos="fade" data-aos-once="true" style={{ color: "white", textAlign: "center", textShadow: "white 1px 0 15px", fontSize: "3rem" }}>Canguros</h1>
+                                    <Link to={"/productos"} className='m-3' variant='warning' style={{ fontWeight: "bold" }}> <img className='Category-img' width={50} src="https://icongr.am/clarity/window-close.svg?size=128&color=ffffff" alt="Imagen de cruz de cierre" /> </Link>
+                                </div>
                                 <div className='Catalogo-container'>
                                     {filter.map((prod) => {
-                                        return (
+                                        return prod.categoria === "buzos oversize frisado super soft" && (
                                             <>
                                                 <div key={prod.id} className='Catalogo-cards'>
                                                     <Link to={`/individual/${prod._id}`} style={{ textDecoration: "none" }}>
@@ -96,4 +102,4 @@ function ProdsCatalogo() {
     )
 }
 
-export default ProdsCatalogo
+export default ProdsHoodies

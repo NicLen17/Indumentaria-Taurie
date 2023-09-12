@@ -1,6 +1,9 @@
 .About-container {
-    width: 100%;
-    scroll-margin: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 80%;
     margin-top: 80px;
 }
 
@@ -12,7 +15,7 @@
     flex-wrap: wrap;
     text-align: center;
     background-image: url('../img/Background.webp');
-    width: 80%;
+    width: 100%;
     padding: 80px;
     border-radius: 15px;
     border: 2px solid var(--decoraciones);

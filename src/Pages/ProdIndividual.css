@@ -112,12 +112,12 @@
     transform: scale(1.5);
 }
 
-.filter_spinner_container {
+.filter_spinner_individual {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 150px 0px 0px 120px !important;
+    margin-top: 50px !important;
 }
 
 .filter_spinner {

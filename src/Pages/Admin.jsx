@@ -285,9 +285,9 @@ function Admin() {
                                     <tr>
                                         <th>Codigo</th>
                                         <th>Precio</th>
-                                        <th>Categoria</th>
-                                        <th>Nombre</th>
                                         <th>Marca</th>
+                                        <th>Nombre</th>
+                                        <th>Categoria</th>
                                         <th>Imagen</th>
                                         <th>Funciones</th>
                                     </tr>
@@ -297,7 +297,7 @@ function Admin() {
                                         products.map((product) => (
                                             <tr key={product._id}>
                                                 <td>{product.codigo}</td>
-                                                <td>${product.precio}</td>
+                                                <td>${product.precio * 1.1}</td>
                                                 <td>{product.nombre}</td>
                                                 <td>{product.marca}</td>
                                                 <td>{product.categoria}</td>

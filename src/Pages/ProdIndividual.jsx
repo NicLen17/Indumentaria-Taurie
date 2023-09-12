@@ -1,6 +1,7 @@
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './ProdIndividual.css';
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -13,9 +14,40 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
     const [products, setproducts] = useState({});
     const [open, setOpen] = useState(false);
     const [cargando, setCargando] = useState(true);
+    const [cargaBoton, setCargaBoton] = useState(false);
     const [alert, setAlert] = useState("");
     const [alertFail, setAlertFail] = useState("");
+    const [preferenceId, setPreferenceId] = useState(null);
+    //Mercado pago
 
+    initMercadoPago("APP_USR-7ae5cfee-d433-4501-a12a-da4a24d4097e");
+
+    const createPreference = async () => {
+        try {
+            const response = await axios.post("http://localhost:4000/create_preference", {
+                description: products.nombre,
+                price: products.precio * 1.1,
+                quantity: 1,
+                currency_id: "ARS",
+            });
+
+            const { id } = response.data;
+            return id;
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleBuy = async () => {
+        setCargaBoton(true);
+        const id = await createPreference();
+        if (id) {
+            setCargaBoton(false)
+            setPreferenceId(id);
+        }
+    };
+
+    //Todas las demas funcionalidades
     useEffect(() => {
         const producto = async () => {
             const { data } = await axios.get(`productos/${id}`);
@@ -52,7 +84,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                     {
                         cargando
                             ?
-                            <div style={{ margin: "auto" }} className='filter_spinner_container'>
+                            <div style={{ margin: "auto" }} className='filter_spinner_individual'>
                                 <Spinner className='filter_spinner' variant="warning" />
                                 <p className='filter_spinner_text'>Cargando tu producto...</p>
                             </div>
@@ -73,7 +105,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                         <div className='individual_content_right'>
                                             <div className='individual_info'>
                                                 <h1>{products.nombre} {products.marca}</h1>
-                                                <h2 style={{ textAlign: "center", color: "green", fontWeight: "bold" }}>$<span style={{ color: "white" }}>{products.precio}</span></h2>
+                                                <h2 style={{ textAlign: "center", color: "green", fontWeight: "bold" }}>$<span style={{ color: "white" }}>{products.precio * 1.1}</span></h2>
                                             </div>
                                             <div className='individual_items'>
                                                 <label
@@ -93,9 +125,19 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                                 </ul>
                                             </div>
                                             <div>
-                                                {/* <Link to={`/consultas/${products._id}`}>
-                                                    <Button className='m-3' variant='none'> Hacer consulta </Button>
-                                                </Link> */}
+
+                                                {
+                                                    userName && (
+                                                        <><Button onClick={handleBuy} className='m-3' variant='none'>      {
+                                                            cargaBoton
+                                                                ?
+                                                                <Spinner animation="border" variant="warning" />
+                                                                :
+                                                                <h6 style={{ margin: "auto", padding: "5px" }}>Comprar</h6>
+                                                        } </Button></>
+                                                    )
+                                                }
+
                                                 {userName && (
                                                     <>
                                                         <OverlayTrigger
@@ -106,6 +148,12 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                                             <img loading='lazy' className='individual_fav_icon' onClick={agregarFavorito} src="https://icongr.am/clarity/heart.svg?size=40&color=ffffff" alt="Imagen de corazon referente a agregado a favorito" />
                                                         </OverlayTrigger>
                                                     </>
+                                                )}
+
+                                                {userName && (
+                                                    preferenceId && (<Wallet initialization={{ preferenceId }} />
+                                                    
+                                                    )
                                                 )}
                                             </div>
                                             {alert && <Alert variant="primary">{alert}</Alert>}
