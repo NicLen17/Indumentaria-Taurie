@@ -1,8 +1,8 @@
 import './PopularProd.css'
 import { Card } from 'react-bootstrap';
 import Remera from '../img/Remera.webp';
-import Hoodie from '../img/HOODIE.webp';
-import Canguro from '../img/CANGURO.webp';
+import Hoodie from '../img/Hoodie.webp';
+import Canguro from '../img/Canguro.webp';
 import Accesorios from '../img/Accesorios.webp';
 import { Link, NavLink } from 'react-router-dom';
 
