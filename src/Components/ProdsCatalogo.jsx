@@ -80,7 +80,7 @@ function ProdsCatalogo() {
                                                                 <img src={prod.img[0]} alt="" />
                                                             </div>
                                                             <h3 style={{ textTransform: "capitalize" }}> {prod.nombre} </h3>
-                                                            <p> <span style={{ color: "green" }}>$</span>{prod.precio * 1.1} </p>
+                                                            <p> <span style={{ color: "green" }}>$</span>{prod.precio} </p>
                                                         </div>
                                                     </Link>
                                                 </div>

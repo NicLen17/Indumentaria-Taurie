@@ -297,9 +297,9 @@ function Admin() {
                                         products.map((product) => (
                                             <tr key={product._id}>
                                                 <td>{product.codigo}</td>
-                                                <td>${product.precio * 1.1}</td>
-                                                <td>{product.nombre}</td>
+                                                <td>${product.precio}</td>
                                                 <td>{product.marca}</td>
+                                                <td>{product.nombre}</td>
                                                 <td>{product.categoria}</td>
                                                 <td>
                                                     <img loading='lazy' style={{ width: "150px", height: "120px", objectFit: "cover"}} src={product.img[0]} alt="" />

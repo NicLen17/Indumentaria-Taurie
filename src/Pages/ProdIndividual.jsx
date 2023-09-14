@@ -26,7 +26,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
         try {
             const response = await axios.post("https://backendtaurie.onrender.com/create_preference", {
                 description: products.nombre,
-                price: products.precio * 1.1,
+                price: products.precio,
                 quantity: 1,
                 currency_id: "ARS",
             });
@@ -105,7 +105,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                         <div className='individual_content_right'>
                                             <div className='individual_info'>
                                                 <h1>{products.nombre} {products.marca}</h1>
-                                                <h2 style={{ textAlign: "center", color: "green", fontWeight: "bold" }}>$<span style={{ color: "white" }}>{products.precio * 1.1}</span></h2>
+                                                <h2 style={{ textAlign: "center", color: "green", fontWeight: "bold" }}>$<span style={{ color: "white" }}>{products.precio}</span></h2>
                                             </div>
                                             <div className='individual_items'>
                                                 <label
