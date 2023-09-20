@@ -21,7 +21,7 @@ function PopularProd() {
           </Card>
         </Link>
 
-        <Link data-aos="fade-down" data-aos-delay="300" data-aos-once="true" data-aos-duration="800" as={NavLink} style={{ textDecoration: "none" }} to={"/productos"}>
+        <Link data-aos="fade-down" data-aos-delay="300" data-aos-once="true" data-aos-duration="800" as={NavLink} style={{ textDecoration: "none" }} to={"/productos/remeras"}>
           <Card className='Popular-card' style={{ width: '22rem' }}>
             <Card.Img variant="top" className='Popular-card-img' src={Remera} />
             <Card.Body>

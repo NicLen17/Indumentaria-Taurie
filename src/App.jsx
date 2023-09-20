@@ -14,6 +14,7 @@ import Contacto from './Pages/Contacto';
 import { Analytics } from '@vercel/analytics/react';
 import ProdsHoodies from './Components/ProdsHoodies';
 import ProdsBuzos from './Components/ProdsBuzos';
+import ProdsRemeras from './Components/ProdsRemeras';
 
 const localToken = JSON.parse(localStorage.getItem("token"))?.token || "";
 
@@ -83,6 +84,7 @@ function App() {
             <Route path="/productos" element={<Catalogo />} />
             <Route path="/productos/hoodies" element={<ProdsHoodies />} />
             <Route path="/productos/canguros" element={<ProdsBuzos />} />
+            <Route path="/productos/remeras" element={<ProdsRemeras />} />
             <Route path="/contact" element={<Contacto />} />
             <Route path="/admin" element={<Admin user={user.nombre} />} />
             <Route path='/perfil' element={<Profile favorito={favorito} user={user} />} />

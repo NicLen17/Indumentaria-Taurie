@@ -146,6 +146,19 @@
     }
 }
 
+.tipos-pago {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--principal);
+    border: 2px solid var(--decoraciones);
+    border-radius: 15px;
+}
+
 @media (max-width: 540px) {
     .indivudual_img img {
         height: 300px;

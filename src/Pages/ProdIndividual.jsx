@@ -8,6 +8,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { Alert, Spinner } from 'react-bootstrap';
 import ScrollToTop from '../Components/ScrollToTop';
+import ModalCompra from '../Components/ModalCompra';
 
 function ProdPrincipal({ userName, favorito, setFavorito }) {
     const { id } = useParams();
@@ -18,6 +19,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
     const [alert, setAlert] = useState("");
     const [alertFail, setAlertFail] = useState("");
     const [preferenceId, setPreferenceId] = useState(null);
+    const [modalShow, setModalShow] = useState(false);
     //Mercado pago
 
     initMercadoPago("APP_USR-7ae5cfee-d433-4501-a12a-da4a24d4097e");
@@ -43,6 +45,8 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
         const id = await createPreference();
         if (id) {
             setCargaBoton(false)
+            setAlert("")
+            setAlertFail("")
             setPreferenceId(id);
         }
     };
@@ -128,18 +132,14 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
 
                                                 {
                                                     userName && (
-                                                        <><Button onClick={handleBuy} className='m-3' variant='none'>      {
+                                                        <div style={{display: "flex", justifyContent: "center"}}>
+                                                        <Button onClick={handleBuy} className='m-3' variant='none'>      {
                                                             cargaBoton
                                                                 ?
                                                                 <Spinner animation="border" variant="warning" />
                                                                 :
                                                                 <h6 style={{ margin: "auto", padding: "5px" }}>Comprar</h6>
-                                                        } </Button></>
-                                                    )
-                                                }
-
-                                                {userName && (
-                                                    <>
+                                                        } </Button>
                                                         <OverlayTrigger
                                                             placement="bottom"
                                                             delay={{ show: 150, hide: 400 }}
@@ -147,12 +147,23 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                                         >
                                                             <img loading='lazy' className='individual_fav_icon' onClick={agregarFavorito} src="https://icongr.am/clarity/heart.svg?size=40&color=ffffff" alt="Imagen de corazon referente a agregado a favorito" />
                                                         </OverlayTrigger>
-                                                    </>
-                                                )}
+                                                        </div>
+                                                    )
+                                                }
 
                                                 {userName && (
-                                                    preferenceId && (<Wallet initialization={{ preferenceId }} />
-                                                    
+                                                    preferenceId && (
+                                                        <div className='tipos-pago'>
+                                                            <p style={{fontWeight: "bold"}}>Selecciona una opcion:</p>
+                                                            <p style={{marginBottom: "-10px"}}>Por mercado pago se recargara un 10%</p>
+                                                            <Wallet initialization={{ preferenceId }} />
+                                                            <Button className='m-3' variant='none' onClick={() => setModalShow(true)}>Transferencia</Button>
+                                                            <ModalCompra
+                                                                show={modalShow}
+                                                                onHide={() => setModalShow(false)}
+                                                                products={products}
+                                                            />
+                                                        </div>
                                                     )
                                                 )}
                                             </div>

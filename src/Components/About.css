@@ -39,11 +39,7 @@
 @media (max-width: 1500px) {
     .About{
         width: 100%;
-        border: none;
-        border-bottom: 2px solid var(--decoraciones);
-        border-top: 2px solid var(--decoraciones);
         height: 100%;
-        border-radius: 0px;
         padding: 15px;
     }
 }
@@ -51,5 +47,18 @@
 @media (max-width: 1500px) {
     .About-description{
         font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .About-container{
+        width: 100%;
+    }
+
+    .About {
+        border-radius: 0px;
+        border: none;
+        border-bottom: 2px solid var(--decoraciones);
+        border-top: 2px solid var(--decoraciones);
     }
 }
