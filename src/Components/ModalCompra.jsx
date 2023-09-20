@@ -20,7 +20,7 @@ function ModalCompra(props) {
                 </Modal.Header>
                 <Modal.Body className='modal-body-container'>
                     <h4>Selecciona una opcion:</h4>
-                    <div className='modal-body'>
+                    <div className='modal-body-compra'>
                         <Button className='boton-transferencia' variant='none' onClick={() =>  navigator.clipboard.writeText('0000003100099152831444')}><img src="https://icongr.am/jam/pin.svg?size=30&color=288BA8" alt="Icono de copia" />CVU</Button>
                         <Button className='boton-transferencia' variant='none' onClick={() =>  navigator.clipboard.writeText('Taurie')}><img src="https://icongr.am/jam/pin.svg?size=30&color=288BA8" alt="Icono de copia" />Alias</Button>
                     </div>

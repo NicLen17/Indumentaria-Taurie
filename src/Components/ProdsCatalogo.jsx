@@ -4,13 +4,15 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import SearchaBar from './SearchaBar';
+import Pagination from './Pagination';
 
 function ProdsCatalogo() {
-
     const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState([]);
     const [busqueda, setBusqueda] = useState('');
     const [cargando, setCargando] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const postPerPage = 8;
 
     useEffect(() => {
         const productos = async () => {
@@ -22,6 +24,13 @@ function ProdsCatalogo() {
         productos()
     }, []);
 
+    //Paginacion
+
+    const lastPostIndex = currentPage * postPerPage;
+    const firsPostIndex = lastPostIndex - postPerPage;
+    const currentPost = filter.slice(firsPostIndex, lastPostIndex);
+
+    //Filtado
     const handleBusqueda = (e) => {
         setBusqueda(e.target.value);
     }
@@ -41,6 +50,7 @@ function ProdsCatalogo() {
         if (filter.length === 0) {
             setFilter(products)
         } else {
+            setCurrentPage(1)
             setFilter(filter);
         }
     }
@@ -63,14 +73,14 @@ function ProdsCatalogo() {
                     <>
                         {
                             <>
-                            <SearchaBar limpiar={limpiar} onSearch={onSearch} handleBusqueda={handleBusqueda} busqueda={busqueda} />
-                            {
-                busqueda && (
-                    <h2 className='Search-title'>Buscando productos: <span style={{ color: "var(--decoraciones)" }}>{busqueda}</span></h2>
-                )
-            }
+                                <SearchaBar limpiar={limpiar} onSearch={onSearch} handleBusqueda={handleBusqueda} busqueda={busqueda} />
+                                {
+                                    busqueda && (
+                                        <h2 className='Search-title'>Buscando productos: <span style={{ color: "var(--decoraciones)" }}>{busqueda}</span></h2>
+                                    )
+                                }
                                 <div className='Catalogo-container'>
-                                    {filter.map((prod) => {
+                                    {currentPost.map((prod) => {
                                         return (
                                             <>
                                                 <div key={prod.id} className='Catalogo-cards'>
@@ -88,6 +98,7 @@ function ProdsCatalogo() {
                                         )
                                     })}
                                 </div>
+                                <Pagination totalPosts={filter.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
                             </>
                         }
                     </>

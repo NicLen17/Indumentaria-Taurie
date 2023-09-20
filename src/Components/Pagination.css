@@ -1,0 +1,27 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 20px 0px -80px 0px;
+}
+
+.pagination-container button {
+    width: 35px;
+    border-radius: 55px;
+    border: 2px solid var(--decoraciones);
+    background-color: black;
+    color: white;
+    transition: 0.2s;
+}
+
+.pagination-container button:hover {
+    transform: scale(1.1);
+    color: black;
+    background-color: var(--decoraciones);
+}
+
+.pagination-container button.active {
+    background-color: var(--decoraciones);
+    font-weight: bold;
+    color: black;
+}
