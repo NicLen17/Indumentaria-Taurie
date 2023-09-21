@@ -314,10 +314,10 @@ export default function Footer({
                         </Modal>
                     </p>
                     <div className="footer-icons">
-                        <a href="mailto:indumtaurie@gmail.com?Subject=Consulta%20desde%20la%20pagina%20web.%20"><img loading='lazy' className='Redes-footer' src="https://icongr.am/simple/gmail.svg?size=128&color=currentColor&colored=true " alt="" /></a>
-                        <a target="blank" href="https://www.instagram.com/indumentaria_taurie/"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/instagram.svg?size=128&color=ff24f8" alt="" /></a>
-                        <a target="blank" href="https://wa.me/543815768548?text=Buenos%20días,%20vengo%20desde%20la%20pagina%20web%20para%20realizar%20una%20consulta.%20"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/whatsapp.svg?size=30&color=1dcd3b" alt="" /></a>
-                        <a target="blank" href="https://www.facebook.com/profile.php?id=100077452835748"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/facebook-square.svg?size=128&color=4240d4" alt="" /></a>
+                        <a href="mailto:indumtaurie@gmail.com?Subject=Consulta%20desde%20la%20pagina%20web.%20"><img loading='lazy' className='Redes-footer' src="https://icongr.am/simple/gmail.svg?size=128&color=currentColor&colored=true " alt="Logo de Mail - Taurie" /></a>
+                        <a target="blank" href="https://www.instagram.com/indumentaria_taurie/"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/instagram.svg?size=128&color=ff24f8" alt="Logo de instagram - Taurie" /></a>
+                        <a target="blank" href="https://wa.me/543815768548?text=Buenos%20días,%20vengo%20desde%20la%20pagina%20web%20para%20realizar%20una%20consulta.%20"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/whatsapp.svg?size=30&color=1dcd3b" alt="Logo de whatsapp - Taurie" /></a>
+                        <a target="blank" href="https://www.facebook.com/profile.php?id=100077452835748"><img loading='lazy' className='Redes-footer' src="https://icongr.am/fontawesome/facebook-square.svg?size=128&color=4240d4" alt="Logo de facebook - Taurie" /></a>
                     </div>
                 </div>
                 <div className="footer-right">
@@ -334,21 +334,21 @@ export default function Footer({
                             delay={{ show: 120, hide: 400 }}
                             overlay={toolTipCredito}
                         >
-                            <li className='footer-paid-element'><img src="https://icongr.am/clarity/credit-card.svg?size=50&color=000000" alt="" /></li>
+                            <li className='footer-paid-element'><img src="https://icongr.am/clarity/credit-card.svg?size=50&color=000000" alt="Icono de tarjeta de credito - Taurie" /></li>
                         </OverlayTrigger>
                         <OverlayTrigger
                             placement="top"
                             delay={{ show: 120, hide: 400 }}
                             overlay={toolTipEfectivoTransferencia}
                         >
-                            <li className='footer-paid-element'><img src="https://icongr.am/fontawesome/dollar.svg?size=50&color=000000" alt="" /></li>
+                            <li className='footer-paid-element'><img src="https://icongr.am/fontawesome/dollar.svg?size=50&color=000000" alt="Logo de dolar - Taurie" /></li>
                         </OverlayTrigger>
                         <OverlayTrigger
                             placement="top"
                             delay={{ show: 120, hide: 400 }}
                             overlay={toolTipoEnvio}
                         >
-                            <li className='footer-paid-element'><img src="https://icongr.am/fontawesome/truck.svg?size=50&color=000000" alt="" /></li>
+                            <li className='footer-paid-element'><img src="https://icongr.am/fontawesome/truck.svg?size=50&color=000000" alt="Logo de transporte - Taurie" /></li>
                         </OverlayTrigger>
                     </div>
                     <div className="mapa-footer">
