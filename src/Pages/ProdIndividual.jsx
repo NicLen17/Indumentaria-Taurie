@@ -36,7 +36,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
 
     const createPreference = async () => {
         try {
-            const response = await axios.post("http://localhost:4000/create_preference", {
+            const response = await axios.post("https://backendtaurie.onrender.com/create_preference", {
                 description: products.nombre,
                 price: products.precio,
                 quantity: cantidad,
