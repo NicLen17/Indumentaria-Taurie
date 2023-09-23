@@ -192,7 +192,23 @@ export default function AgregadoProducto({ productos }) {
                                 name="codigo"
                                 onChange={(e) => handleChange(e)}
                                 required
-                                type="text"
+                                type="number"
+                                className="Form_agregado_inputs"
+                                maxLength="20"
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                Complete este campo!
+                            </Form.Control.Feedback>
+                            <Form.Control.Feedback>Recibido</Form.Control.Feedback>
+                        </Form.Group>
+
+                        <Form.Group className="Form_agregado_inputs_container">
+                            <Form.Label>Stock</Form.Label>
+                            <Form.Control
+                                name="stock"
+                                onChange={(e) => handleChange(e)}
+                                required
+                                type="number"
                                 className="Form_agregado_inputs"
                                 maxLength="20"
                             />

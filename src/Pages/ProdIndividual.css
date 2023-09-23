@@ -180,3 +180,48 @@
         margin: 50px 0px 0px 0px !important;
     }
 }
+
+.contact_form {
+    position: absolute;
+    backdrop-filter: blur(5px);
+    max-width: 100%;
+    width: 700px;
+    background-color: rgba(0, 0, 0, 0.829);
+    backdrop-filter: blur(100);
+    padding: 80px;
+    color: rgb(253, 253, 253);
+    border: 1px solid var(--main-bg-color);
+    transition: 0.3s;
+}
+
+.input_contact {
+    background-color: rgba(255, 255, 255, 0.76);
+    border: 1px solid var(--main-bg-color);
+}
+
+.contact_button {
+    width: 100%;
+    margin-top: 20px;
+    color: white;
+    border: 1px solid var(--main-bg-color);
+    transition: 0.3s;
+}
+
+.contact_button:hover {
+    border: 1px solid var(--main-bg-color);
+    background-color: rgba(80, 18, 18, 0.623);
+}
+
+@media (max-width: 1200px) {
+    .contact_section {
+        border-right: none;
+        border-left: none;
+        width: 100%;
+    }
+}
+
+@media (max-width: 850px) {
+    .contact_form {
+        width: 600px;
+    }
+}

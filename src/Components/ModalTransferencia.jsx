@@ -1,8 +1,8 @@
-import './ModalCompra.css'
+import './ModalTransferencia.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function ModalCompra(props) {
+function ModalTransferencia(props) {
 
     return (
         <>
@@ -32,7 +32,7 @@ function ModalCompra(props) {
                         <li>Una vez adjuntado el comprobante se procedera a organizar el envio.</li>
                     </ol>
                     <p className='aviso-compra'>SI NO SE ADJUNTA EL COMPROBANTE POR MAS QUE SE HAYA REALIZADO LA TRANSFERENCIA NO SE LLEVARA A CABO LA ENTREGA DEL PRODUCTO.
-                        <br /><br />EN TAL CASO SE DEBERA COMUNICAR DIRECTAMENTE AL MISMO NUMERO.
+                        <br /><br />EN TAL CASO SE DEBERA COMUNICAR DIRECTAMENTE AL MISMO NUMERO.<br /><br />EL PRECIO NO INCLUYE EL ENVIO.
                     </p>
                 </Modal.Body>
                 <Modal.Footer className='modal-footer'>
@@ -43,4 +43,4 @@ function ModalCompra(props) {
     )
 }
 
-export default ModalCompra
+export default ModalTransferencia

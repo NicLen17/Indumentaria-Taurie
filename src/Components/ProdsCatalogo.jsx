@@ -81,7 +81,7 @@ function ProdsCatalogo() {
                                 }
                                 <div className='Catalogo-container'>
                                     {currentPost.map((prod) => {
-                                        return (
+                                        return prod.stock >= 1 && ( 
                                             <>
                                                 <div key={prod.id} className='Catalogo-cards'>
                                                     <Link to={`/individual/${prod._id}`} style={{ textDecoration: "none" }}>

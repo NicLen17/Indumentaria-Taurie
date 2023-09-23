@@ -6,33 +6,42 @@ import './ProdIndividual.css';
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { Alert, Spinner } from 'react-bootstrap';
+import { Alert, Modal, Spinner } from 'react-bootstrap';
 import ScrollToTop from '../Components/ScrollToTop';
-import ModalCompra from '../Components/ModalCompra';
+import ModalTransferencia from '../Components/ModalTransferencia';
+import { Form } from "react-bootstrap";
 
 function ProdPrincipal({ userName, favorito, setFavorito }) {
     const { id } = useParams();
     const [products, setproducts] = useState({});
-    const [open, setOpen] = useState(false);
     const [cargando, setCargando] = useState(true);
     const [cargaBoton, setCargaBoton] = useState(false);
     const [alert, setAlert] = useState("");
     const [alertFail, setAlertFail] = useState("");
     const [preferenceId, setPreferenceId] = useState(null);
-    const [modalShow, setModalShow] = useState(false);
+    const [transferenciaShow, setTransferenciaShow] = useState(false);
+    const [cantidad, setCantidad] = useState(1);
+    const [validated, setValidated] = useState(false);
+    const [input, setInput] = useState({});
+    const [alertSuccess, setalertSuccess] = useState("")
+
+    const cantidadSelect = products.stock;
+
+    const opcionesStock = Array.from({ length: cantidadSelect }, (_, index) => index + 1);
+
     //Mercado pago
 
     initMercadoPago("APP_USR-7ae5cfee-d433-4501-a12a-da4a24d4097e");
 
+
     const createPreference = async () => {
         try {
-            const response = await axios.post("https://backendtaurie.onrender.com/create_preference", {
+            const response = await axios.post("http://localhost:4000/create_preference", {
                 description: products.nombre,
                 price: products.precio,
-                quantity: 1,
+                quantity: cantidad,
                 currency_id: "ARS",
             });
-
             const { id } = response.data;
             return id;
         } catch (error) {
@@ -51,7 +60,13 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
         }
     };
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     //Todas las demas funcionalidades
+
     useEffect(() => {
         const producto = async () => {
             const { data } = await axios.get(`productos/${id}`);
@@ -60,6 +75,12 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
         }
         producto()
     }, [id])
+
+    const handleCantidad = (e) => {
+        const cantidadPagar = e.target.value;
+        setCantidad(cantidadPagar);
+        handleChange(e)
+    };
 
     const agregarFavorito = () => {
         if (!favorito.find(p => p._id === products._id)) {
@@ -77,6 +98,46 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
             Agregar a favoritos
         </Tooltip>
     );
+
+    //Formulario de venta
+
+    useEffect(() => {
+        const producto = async () => {
+            const { data } = await axios.get(`productos/${id}`);
+            setproducts(data);
+        }
+        producto()
+    }, [id])
+
+    const handleSubmit = async (e) => {
+        const formulario = e.currentTarget;
+        e.preventDefault();
+        setValidated(true);
+        if (formulario.checkValidity() === false) {
+            return e.stopPropagation();
+        }
+        try {
+            await axios.post("consultas", input);
+            formulario.reset();
+            setalertSuccess("Datos guardados, selecciona medio de pago");
+            setValidated(false);
+            handleBuy()
+        } catch (error) {
+            error.response.data.msg
+                ? setAlert(error.response.data.msg)
+                : setAlert("este error");
+        }
+        setTimeout(() => {
+            setAlert("");
+        }, 2000);
+    };
+    const handleChange = (e) => {
+        setAlert("");
+        const { name, value } = e.target;
+        const consulta = { ...input, [name]: value };
+        setInput(consulta);
+    }
+
 
     localStorage.setItem("agregarcarrito", JSON.stringify(favorito));
 
@@ -112,14 +173,10 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                                 <h2 style={{ textAlign: "center", color: "green", fontWeight: "bold" }}>$<span style={{ color: "white" }}>{products.precio}</span></h2>
                                             </div>
                                             <div className='individual_items'>
-                                                <label
-                                                    className='individual_information'
-                                                    onClick={() => setOpen(!open)}
-                                                    aria-controls="example-collapse-text"
-                                                    aria-expanded={open}>
+                                                <h3 style={{ color: "var(--decoraciones)", textAlign: "center", marginTop: "10px" }}>
                                                     Caracteristicas
                                                     <img loading='lazy' src="https://icongr.am/clarity/clipboard.svg?size=128&color=ffffff" alt="Icono referente a lista" />
-                                                </label>
+                                                </h3>
                                                 <ul>
                                                     <li>Marca: {products.marca}</li>
                                                     <li>Genero: {products.genero}</li>
@@ -132,40 +189,25 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
 
                                                 {
                                                     userName && (
-                                                        <div style={{display: "flex", justifyContent: "center"}}>
-                                                        <Button onClick={handleBuy} className='m-3' variant='none'>      {
-                                                            cargaBoton
-                                                                ?
-                                                                <Spinner animation="border" variant="warning" />
-                                                                :
-                                                                <h6 style={{ margin: "auto", padding: "5px" }}>Comprar</h6>
-                                                        } </Button>
-                                                        <OverlayTrigger
-                                                            placement="bottom"
-                                                            delay={{ show: 150, hide: 400 }}
-                                                            overlay={renderTooltip}
-                                                        >
-                                                            <img loading='lazy' className='individual_fav_icon' onClick={agregarFavorito} src="https://icongr.am/clarity/heart.svg?size=40&color=ffffff" alt="Imagen de corazon referente a agregado a favorito" />
-                                                        </OverlayTrigger>
+                                                        <div style={{ display: "flex", justifyContent: "center" }}>
+                                                            <Button onClick={handleShow} className='m-3' variant='none'>      {
+                                                                cargaBoton
+                                                                    ?
+                                                                    <Spinner animation="border" variant="warning" />
+                                                                    :
+                                                                    <h6 style={{ margin: "auto", padding: "5px" }}>Comprar</h6>
+                                                            } </Button>
+                                                            <OverlayTrigger
+                                                                placement="bottom"
+                                                                delay={{ show: 150, hide: 400 }}
+                                                                overlay={renderTooltip}
+                                                            >
+                                                                <img loading='lazy' className='individual_fav_icon' onClick={agregarFavorito} src="https://icongr.am/clarity/heart.svg?size=40&color=ffffff" alt="Imagen de corazon referente a agregado a favorito" />
+                                                            </OverlayTrigger>
                                                         </div>
                                                     )
                                                 }
 
-                                                {userName && (
-                                                    preferenceId && (
-                                                        <div className='tipos-pago'>
-                                                            <p style={{fontWeight: "bold"}}>Selecciona una opcion:</p>
-                                                            <p style={{marginBottom: "-10px"}}>Por mercado pago se recargara un 10%</p>
-                                                            <Wallet initialization={{ preferenceId }} />
-                                                            <Button className='m-3' variant='none' onClick={() => setModalShow(true)}>Transferencia</Button>
-                                                            <ModalCompra
-                                                                show={modalShow}
-                                                                onHide={() => setModalShow(false)}
-                                                                products={products}
-                                                            />
-                                                        </div>
-                                                    )
-                                                )}
                                             </div>
                                             {alert && <Alert variant="primary">{alert}</Alert>}
                                             {alertFail && <Alert variant="danger">{alertFail}</Alert>}
@@ -176,6 +218,109 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                     }
                 </div>
             </div>
+            <>
+                <Modal size='lg' centered="true" className='modal-container' show={show} onHide={handleClose}>
+                    <Modal.Header className='modal-header' closeButton>
+                        <Modal.Title>Formulario de compra</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className='modal-body-container'>
+                        {alert && <Alert variant="danger">{alert}</Alert>}
+                        <Form noValidate validated={validated} onSubmit={(e) => handleSubmit(e)}>
+                            <h1 style={{ borderBottom: "1px solid var(--main-bg-color)", paddingBottom: "10px", textTransform: "capitalize" }}> {products.nombre} | {products.marca} </h1>
+                            <Form.Group
+                                style={{ marginTop: "15px" }}
+                                controlId="exampleForm.ControlInput1"
+                            >
+                                <Form.Label>Nombre y Apellido</Form.Label>
+                                <Form.Control className="input_contact" type="name" placeholder="Nombre y Apellido" required name="nombreyapellido" maxLength="50" onChange={(e) => handleChange(e)} />
+                                <Form.Control.Feedback type="invalid">
+                                    Se requiere nombre y apellido!
+                                </Form.Control.Feedback>
+                                <Form.Control.Feedback>Recibido</Form.Control.Feedback>
+                            </Form.Group>
+
+                            <Form.Group
+                                style={{ marginTop: "15px" }}
+                                controlId="exampleForm.ControlInput1"       >
+                                <Form.Label>Correo electronico</Form.Label>
+                                <Form.Control className="input_contact" type="email" placeholder="Correo@example.com" required maxLength="30" name="email" onChange={(e) => handleChange(e)} />
+                                <Form.Control.Feedback type="invalid">
+                                    Se requiere correo Electronico!
+                                </Form.Control.Feedback>
+                                <Form.Control.Feedback>Recibido</Form.Control.Feedback>
+                            </Form.Group>
+
+                            <Form.Group
+                                style={{ marginTop: "15px" }}
+                                controlId="exampleForm.ControlInput1"
+                            >
+                                <Form.Label>Telefono</Form.Label>
+                                <Form.Control className="input_contact" maxLength="10" type="number" placeholder="codigo de area + numero sin 15" required max="999999999999" name="tel" onChange={(e) => handleChange(e)} />
+                                <Form.Control.Feedback type="invalid">
+                                    Se requiere telefono valido!
+                                </Form.Control.Feedback>
+                                <Form.Control.Feedback>Recibido</Form.Control.Feedback>
+                            </Form.Group>
+
+                            <Form.Group
+                                style={{ marginTop: "15px" }}
+                                controlId="exampleForm.ControlInput1"
+                            >
+                                <Form.Label>Direccion</Form.Label>
+                                <Form.Control className="input_contact" type="name" placeholder="Provincia - Ciudad - Barrio - piso - altura" required name="direccion" maxLength="50" onChange={(e) => handleChange(e)} />
+                                <Form.Control.Feedback type="invalid">
+                                    Se requiere la direccion!
+                                </Form.Control.Feedback>
+                                <Form.Control.Feedback>Recibido</Form.Control.Feedback>
+                            </Form.Group>
+
+                            <Form.Group
+                                style={{ marginTop: "15px" }}
+                                controlId="exampleForm.ControlInput1"
+                            >
+                                <Form.Label>Indicaciones adicionales</Form.Label>
+                                <Form.Control className="input_contact" type="name" placeholder="Porton negro, frente a..." required name="indicaciones" maxLength="50" onChange={(e) => handleChange(e)} />
+                                <Form.Control.Feedback type="invalid">
+                                    Se requieren indicaciones!
+                                </Form.Control.Feedback>
+                                <Form.Control.Feedback>Recibido</Form.Control.Feedback>
+                            </Form.Group>
+
+                            <select className="input_contact mt-3" style={{ width: "100%" }} onChange={(e) => handleCantidad(e)} name="cantidad">
+                                <option defaultValue="1">Selecciona la cantidad</option>
+                                {opcionesStock.map((stock, index) => (
+                                    <option key={index} value={stock}>
+                                        {stock}
+                                    </option>
+                                ))}
+                            </select>
+
+                            <Button onClick={(e) => handleCantidad(e)} className="contact_button" variant="none" name='codigoCompra' value={Math.floor(Math.random() * 10000)} type="submit"> Confirmar datos </Button>
+                        </Form>
+
+                        {alertSuccess && <Alert className='mt-3' variant="dark">{alertSuccess}</Alert>}
+                        {userName && (
+                            preferenceId && (
+                                <div className='tipos-pago'>
+                                    <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", textAlign: "center" }}>
+                                        <p style={{ fontWeight: "bold" }}>Selecciona una opcion:</p>
+                                        <p style={{ marginBottom: "10px" }}>Por mercado pago se recargara un 10%</p>
+                                        <Wallet initialization={{ preferenceId }} />
+                                        <Button className='m-3' variant='outline-warning' size="lg" onClick={() => setTransferenciaShow(true)}>Transferencia</Button>
+                                    </div>
+                                    <ModalTransferencia
+                                        show={transferenciaShow}
+                                        onHide={() => setTransferenciaShow(false)}
+                                    />
+                                </div>
+                            )
+                        )}
+                    </Modal.Body>
+                    <Modal.Footer className='modal-footer'>
+                        <Button style={{ border: "1px solid var(--decoraciones)", color: "white" }} variant='none' onClick={handleClose}>Cerrar</Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
         </>
     )
 }

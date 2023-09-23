@@ -284,6 +284,7 @@ function Admin() {
                                 <thead>
                                     <tr>
                                         <th>Codigo</th>
+                                        <th>Stock</th>
                                         <th>Precio</th>
                                         <th>Marca</th>
                                         <th>Nombre</th>
@@ -297,6 +298,7 @@ function Admin() {
                                         products.map((product) => (
                                             <tr key={product._id}>
                                                 <td>{product.codigo}</td>
+                                                <td>{product.stock}</td>
                                                 <td>${product.precio}</td>
                                                 <td>{product.marca}</td>
                                                 <td>{product.nombre}</td>
@@ -390,25 +392,23 @@ function Admin() {
                                 <thead>
                                     <tr className="tabla-admin">
                                         <th>Nombre y apellido</th>
-                                        <th>correo electronico</th>
-                                        <th>telefono</th>
-                                        <th>mensaje</th>
+                                        <th>Mail</th>
+                                        <th>Telefono</th>
+                                        <th>Datos de compra</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {consultas.map((cst) => (
                                         <tr key={cst.id}>
-                                            <td>{cst.producto}</td>
-                                            <td className="Form-titulos">
-                                                {cst.email}
-                                            </td>
+                                            <td>{cst.nombreyapellido}</td>
+                                            <td>{cst.email}</td>
                                             <td>{cst.tel}</td>
                                             <td>
                                                 <button
                                                     className="btn btn-success mr-1 ms-2"
                                                     onClick={() => verConsulta(cst._id)}
                                                 >
-                                                    Ver Consulta
+                                                    Ver Compra
                                                 </button>{" "}
                                                 <button
                                                     className="btn btn-danger"
@@ -571,7 +571,7 @@ function Admin() {
                                             name="codigo"
                                             onChange={(e) => handleChange(e)}
                                             required
-                                            type="text"
+                                            type="number"
                                             className="Form_agregado_inputs"
                                             maxLength="20"
                                             defaultValue={productEncontrado.codigo}
@@ -581,6 +581,24 @@ function Admin() {
                                         </Form.Control.Feedback>
                                         <Form.Control.Feedback>Recibido</Form.Control.Feedback>
                                     </Form.Group>
+
+                                    <Form.Group className="Form_agregado_inputs_container" controlId="validationCustom02">
+                                        <Form.Label>Stock</Form.Label>
+                                        <Form.Control
+                                            name="stock"
+                                            onChange={(e) => handleChange(e)}
+                                            required
+                                            type="number"
+                                            className="Form_agregado_inputs"
+                                            maxLength="20"
+                                            defaultValue={productEncontrado.stock}
+                                        />
+                                        <Form.Control.Feedback type="invalid">
+                                            Complete este campo!
+                                        </Form.Control.Feedback>
+                                        <Form.Control.Feedback>Recibido</Form.Control.Feedback>
+                                    </Form.Group>
+
                                     <Form.Group controlId="formFile" className="mb-3">
                                         <Form.Label>Agregar imagen del producto de forma local</Form.Label>
                                         <Form.Group className="Form_agregado_inputs mt-3" controlId="formFileMultiple" onChange={(e) => onChangeImg(e)}>
@@ -672,13 +690,13 @@ function Admin() {
                                 <br />
                                 Tel: {consultaEncontrado.tel}
                                 <br />
+                                Direccion: {consultaEncontrado.direccion}
                                 <br />
-                                Producto: {consultaEncontrado.producto}
+                                Indicaciones: {consultaEncontrado.indicaciones}
                                 <br />
+                                Codigo de compra: {consultaEncontrado.codigoCompra}
                                 <br />
-                                Consulta: <br />
-                                {consultaEncontrado.mensaje}
-                                <br /><br />
+                                Contidad: {consultaEncontrado.cantidad}
                             </div>
                         </Modal.Body>
                         <Modal.Footer className="form_agregado">
@@ -716,6 +734,8 @@ function Admin() {
                                 Precio: ${productEncontrado.precio}
                                 <br />
                                 Codigo: {productEncontrado.codigo}
+                                <br />
+                                Stock: {productEncontrado.stock}
                                 <br />
                                 Categoria: {productEncontrado.categoria}
                                 <br />
