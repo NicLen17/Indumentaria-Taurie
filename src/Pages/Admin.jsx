@@ -385,7 +385,7 @@ function Admin() {
                             </Table>
                         </div>
                     </Tab>
-                    <Tab eventKey="consult" title="Consultas">
+                    <Tab eventKey="consult" title="Ventas">
                         <div>
                             {alertSuccessM && (<Alert variant="success">{alertSuccessM}</Alert>)}
                             <Table className="tabla-admin" responsive striped bordered hover variant="dark">
