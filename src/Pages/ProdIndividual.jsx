@@ -36,7 +36,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
 
     const createPreference = async () => {
         try {
-            const response = await axios.post("https://backendtaurie.onrender.com/create_preference", {
+            const response = await axios.post("http://localhost:4000/create_preference", {
                 description: products.nombre,
                 price: products.precio,
                 quantity: cantidad,
@@ -295,7 +295,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                 ))}
                             </select>
 
-                            <Button onClick={(e) => handleCantidad(e)} className="contact_button" variant="none" name='codigoCompra' value={Math.floor(Math.random() * 10000)} type="submit"> Confirmar datos </Button>
+                            <Button onClick={(e) => handleChange(e)} className="contact_button" variant="none" name='codigoCompra' value={Math.floor(Math.random() * 10000)} type="submit"> Confirmar datos </Button>
                         </Form>
 
                         {alertSuccess && <Alert className='mt-3' variant="dark">{alertSuccess}</Alert>}
