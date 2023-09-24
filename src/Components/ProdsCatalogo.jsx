@@ -87,7 +87,7 @@ function ProdsCatalogo() {
                                                     <Link to={`/individual/${prod._id}`} style={{ textDecoration: "none" }}>
                                                         <div className='Card-catalogo'>
                                                             <div className='Catalogo-img'>
-                                                                <img src={prod.img[0]} alt="" />
+                                                                <img loading='lazy' src={prod.img[0]} alt="" />
                                                             </div>
                                                             <h3 style={{ textTransform: "capitalize" }}> {prod.nombre} </h3>
                                                             <p> <span style={{ color: "green" }}>$</span>{prod.precio} </p>

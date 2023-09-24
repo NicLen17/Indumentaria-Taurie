@@ -87,9 +87,15 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
             const agregado = [...favorito, products];
             setFavorito(agregado);
             setAlert(`Producto agregado a lista de favoritos!`);
+            setTimeout(() => {
+                setAlert("");
+            }, 2000);
         }
         else {
             setAlertFail("Este producto ya se encuentra en favoritos!");
+            setTimeout(() => {
+                setAlertFail("");
+            }, 2000);
         }
     }
 
@@ -120,6 +126,9 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
             await axios.post("consultas", input);
             formulario.reset();
             setalertSuccess("Datos guardados, selecciona medio de pago");
+            setTimeout(() => {
+                setalertSuccess("");
+            }, 2000);
             setValidated(false);
             handleBuy()
         } catch (error) {
@@ -190,13 +199,9 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                                 {
                                                     userName && (
                                                         <div style={{ display: "flex", justifyContent: "center" }}>
-                                                            <Button onClick={handleShow} className='m-3' variant='none'>      {
-                                                                cargaBoton
-                                                                    ?
-                                                                    <Spinner animation="border" variant="warning" />
-                                                                    :
-                                                                    <h6 style={{ margin: "auto", padding: "5px" }}>Comprar</h6>
-                                                            } </Button>
+                                                            <Button onClick={handleShow} className='m-3' variant='none'>
+                                                                <h6 style={{ margin: "auto", padding: "5px" }}>Comprar</h6>
+                                                            </Button>
                                                             <OverlayTrigger
                                                                 placement="bottom"
                                                                 delay={{ show: 150, hide: 400 }}
@@ -295,7 +300,11 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                 ))}
                             </select>
 
-                            <Button onClick={(e) => handleChange(e)} className="contact_button" variant="none" name='codigoCompra' value={Math.floor(Math.random() * 10000)} type="submit"> Confirmar datos </Button>
+                            <Button onClick={(e) => handleChange(e)} className="contact_button" variant="none" name='codigoCompra' value={Math.floor(Math.random() * 10000)} type="submit"> {
+                                cargaBoton
+                                    ?
+                                    <Spinner animation="border" variant="warning" />
+                                    : <h6 style={{ margin: "auto", padding: "5px" }}>Confirmar datos</h6>}</Button>
                         </Form>
 
                         {alertSuccess && <Alert className='mt-3' variant="dark">{alertSuccess}</Alert>}
