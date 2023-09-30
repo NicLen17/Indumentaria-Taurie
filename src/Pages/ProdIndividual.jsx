@@ -24,6 +24,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
     const [validated, setValidated] = useState(false);
     const [input, setInput] = useState({});
     const [alertSuccess, setalertSuccess] = useState("")
+    const [show, setShow] = useState(false);
 
     const cantidadSelect = products.stock;
 
@@ -60,7 +61,9 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
         }
     };
 
-    const [show, setShow] = useState(false);
+    setTimeout(() => {
+        setPreferenceId(null)
+    }, 120000);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -300,11 +303,12 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                 ))}
                             </select>
 
-                            <Button onClick={(e) => handleChange(e)} className="contact_button" variant="none" name='codigoCompra' value={Math.floor(Math.random() * 10000)} type="submit"> {
+                            <Button style={{fontWeight: "bold"}} onClick={(e) => handleChange(e)} className="contact_button" variant="none" name='codigoCompra' value={Math.floor(Math.random() * 10000)} type="submit"> {
                                 cargaBoton
                                     ?
                                     <Spinner animation="border" variant="warning" />
-                                    : <h6 style={{ margin: "auto", padding: "5px" }}>Confirmar datos</h6>}</Button>
+                                    : "Confirmar datos"}
+                                    </Button>
                         </Form>
 
                         {alertSuccess && <Alert className='mt-3' variant="dark">{alertSuccess}</Alert>}
@@ -316,6 +320,7 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                         <p style={{ marginBottom: "10px" }}>Por mercado pago se recargara un 10%</p>
                                         <Wallet initialization={{ preferenceId }} />
                                         <Button className='m-3' variant='outline-warning' size="lg" onClick={() => setTransferenciaShow(true)}>Transferencia</Button>
+                                        <p style={{ fontWeight: "bold", color: "red" }}>Este formulario se cerrara en 2 minutos!</p>
                                     </div>
                                     <ModalTransferencia
                                         show={transferenciaShow}

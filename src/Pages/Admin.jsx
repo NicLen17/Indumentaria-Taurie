@@ -83,7 +83,7 @@ function Admin() {
         }
         setTimeout(() => {
             setalertSuccess("");
-        }, 5000);
+        }, 2000);
     }
 
     async function deleteMensajes(id) {
@@ -93,18 +93,18 @@ function Admin() {
             setalertSuccessM("Mensaje eliminado correctamente");
         }
         setTimeout(() => {
-            setalertSuccess("");
-        }, 5000);
+            setalertSuccessM("");
+        }, 2000);
     }
     async function deleteConsulta(id) {
         if (window.confirm("Estas seguro que deseas eliminar?")) {
             await axios.delete(`consultas/${id}`);
             consulta();
-            setalertSuccessM("Consulta eliminada correctamente");
+            setalertSuccessM("Venta eliminada correctamente");
         }
         setTimeout(() => {
-            setalertSuccess("");
-        }, 5000);
+            setalertSuccessM("");
+        }, 2000);
     }
     const getListaUsuarios = async () => {
         const { data } = await axios.get("usuarios");
@@ -115,11 +115,17 @@ function Admin() {
             try {
                 await axios.put(`usuarios/${id}`);
                 setalertSuccess("Estado modificado correctamente");
+                setTimeout(() => {
+                    setalertSuccess("");
+                }, 2000);
                 getListaUsuarios();
             } catch (error) {
                 error.response.data.msg[0].msg
                     ? setalertSuccess(error.response.data.msg[0].msg)
                     : setalertSuccess(error.response.data.msg);
+                    setTimeout(() => {
+                        setalertSuccess("");
+                    }, 2000);
             }
         }
     }
@@ -142,11 +148,19 @@ function Admin() {
             await axios.put(`/productos/${productEncontrado._id}`, input);
             setShow(false);
             setalertSuccess(`PRODUCTO MODIFICADO EXITOSAMENTE`);
+            setTimeout(() => {
+                setalertSuccess("");
+                ("");
+            }, 2000);
             setValidated(false);
         } catch (error) {
             error.response.data.msg
                 ? setAlert(error.response.data.msg)
                 : setAlert(error.response.data);
+                setTimeout(() => {
+                    setAlert("");
+                    ("");
+                }, 2000);
         }
         productos();
     };

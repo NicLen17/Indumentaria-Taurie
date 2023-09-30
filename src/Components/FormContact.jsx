@@ -20,6 +20,9 @@ function FormContact() {
             await axios.post("mensajes", input);
             formulario.reset()
             setalertSuccess("Mensaje enviado. Gracias en breve le responderemos!");
+            setTimeout(() => {
+                setalertSuccess("");
+            }, 2000);
             setValidated(false)
         } catch (error) {
             error.response.data.msg
@@ -28,7 +31,7 @@ function FormContact() {
         }
         setTimeout(() => {
             setAlert("");
-        }, 5000);
+        }, 2000);
     };
     const handleChange = (e) => {
         setAlert("");
@@ -42,7 +45,6 @@ function FormContact() {
             <h1 data-aos="fade" data-aos-once="true" style={{ color: "white", textAlign: "center", margin: "-50px 0px 60px 0px", textShadow: "white 1px 0 15px", fontSize: "3rem" }}>Dejanos un mensaje</h1>
             <div data-aos="fade-down" data-aos-once="true" data-aos-duration="600" data-aos-delay="200"  className='contact_section'>
                 <section className='contact_form'>
-                    {alertSuccess && <Alert style={{ position: "absolute", marginTop: "500px", border: "1px solid var(--decoraciones)", backgroundColor: "var(--secundario)", color: "white" }} variant="dark">{alertSuccess}</Alert>}
                     {alert && <Alert variant="danger">{alert}</Alert>}
                     <Form noValidate validated={validated} onSubmit={(e) => handleSubmit(e)}>
                         <Form.Group
@@ -88,7 +90,8 @@ function FormContact() {
                             </Form.Control.Feedback>
                             <Form.Control.Feedback>Recibido</Form.Control.Feedback>
                         </Form.Group>
-                        <Button className="contact_button" variant="none" type="submit"> Enviar </Button>
+                        <Button className="contact_button mb-3" variant="none" type="submit"> Enviar </Button>
+                        {alertSuccess && <Alert variant="dark">{alertSuccess}</Alert>}
                     </Form>
                 </section>
             </div>
