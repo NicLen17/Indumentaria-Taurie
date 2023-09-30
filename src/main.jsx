@@ -7,7 +7,7 @@ import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
 
 
-axios.defaults.baseURL = 'http://localhost:4000/api/';
+//axios.defaults.baseURL = 'http://localhost:4000/api/';
 axios.defaults.baseURL = 'https://backendtaurie.onrender.com/api/';
 
 
