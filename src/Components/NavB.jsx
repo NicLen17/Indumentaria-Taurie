@@ -136,7 +136,7 @@ function NavB({
                                 }
                                 {
                                     favorito.length > 0 && (
-                                        <Button variant='none' style={{ cursor: "pointer", position:"relative" }} className='Nav-item p-3 ms-3 mx-auto' onClick={handleShow}><img loading='lazy' src="https://icongr.am/entypo/heart.svg?size=40&color=ff0000 " alt="Imagen de corazon referente a productos favoritos" /> <p style={{ top: "0px", position: "absolute", right: "0"}}> {favorito.length} </p> </Button>
+                                        <Button variant='none' style={{ cursor: "pointer", position: "relative" }} className='Nav-item p-3 ms-3 mx-auto' onClick={handleShow}><img loading='lazy' src="https://icongr.am/entypo/heart.svg?size=40&color=ff0000 " alt="Imagen de corazon referente a productos favoritos" /> <p style={{ top: "0px", position: "absolute", right: "0" }}> {favorito.length} </p> </Button>
                                     )
                                 }
                                 <Modal style={{ color: "white" }} show={show} onHide={handleClose}>
@@ -149,8 +149,13 @@ function NavB({
                                         )}
                                         {
                                             favorito.map((fav) => (
-                                                <div style={{ border: "1px solid var(--decoraciones)", margin: "10px 10px 10px 10px", boxShadow: "0px 0px 10px var(--decoraciones)" }} key={fav.id}>
-                                                    <div style={{ textTransform: "capitalize", marginBottom: "0px", display: "flex", justifyContent: "space-evenly", alignItems: "center" }}> <img style={{ margin: "10px" }} width={100} src={fav.img[0]} alt={fav.nombre} /> {fav.nombre} {fav.marca} <Nav.Link as={NavLink} to={`/individual/${fav._id}`}><Button onClick={handleClose} variant='primary'>Ver</Button></Nav.Link> <Button variant='danger' onClick={() => eliminarFavorito(fav._id)}> <img width={25} src="https://icongr.am/clarity/window-close.svg?size=128&color=ffffff" alt="Imagen de cruz de cierre" /> </Button> </div>
+                                                <div style={{ border: "1px solid var(--decoraciones)", marginBottom: "20px", boxShadow: "0px 0px 10px var(--decoraciones)" }} key={fav.id}>
+                                                    <div style={{ textTransform: "capitalize", display: "flex", justifyContent: "space-evenly", alignItems: "center" }}> <img style={{ margin: "10px" }} width={100} src={fav.img[0]} alt={fav.nombre} /> {fav.nombre} | {fav.marca}
+                                                        <div style={{display: "flex", flexDirection: "column", gap: "10px", justifyContent: "center", alignItems: "center"}}>
+                                                            <Nav.Link as={NavLink} to={`/individual/${fav._id}`}><Button style={{backgroundColor:"black" , borderRadius: "25px", color: "white"}} onClick={handleClose} variant='warning'>Ver</Button></Nav.Link> 
+                                                            <Button style={{backgroundColor:"black" , borderRadius: "25px" , height: "45px", width: "45px"}} variant='danger' onClick={() => eliminarFavorito(fav._id)}> X </Button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             ))
                                         }

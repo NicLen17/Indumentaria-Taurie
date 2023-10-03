@@ -33,10 +33,6 @@ function App() {
   }
 
   const eliminarFavorito = (id) => {
-    const confirmar = window.confirm("Desea eliminar el producto de favoritos?");
-    if (!confirmar) {
-      return;
-    }
     let productosFiltrados = [];
     favorito.map((e) => {
       const coincideId = e._id === id;
