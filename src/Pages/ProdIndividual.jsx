@@ -92,13 +92,13 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
             setAlert(`Producto agregado a lista de favoritos!`);
             setTimeout(() => {
                 setAlert("");
-            }, 2000);
+            }, 2500);
         }
         else {
             setAlertFail("Este producto ya se encuentra en favoritos!");
             setTimeout(() => {
                 setAlertFail("");
-            }, 2000);
+            }, 2500);
         }
     }
 
@@ -217,8 +217,8 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                                 }
 
                                             </div>
-                                            {alert && <Alert variant="primary">{alert}</Alert>}
-                                            {alertFail && <Alert variant="danger">{alertFail}</Alert>}
+                                            {alert && <Alert data-aos-duration="800" data-aos="fade-up" data-aos-delay="50" data-aos-once="true" variant="primary">{alert}</Alert>}
+                                            {alertFail && <Alert data-aos-duration="800" data-aos="fade-up" data-aos-delay="50" data-aos-once="true" variant="danger">{alertFail}</Alert>}
                                         </div>
                                     </>
                                 }
@@ -303,12 +303,12 @@ function ProdPrincipal({ userName, favorito, setFavorito }) {
                                 ))}
                             </select>
 
-                            <Button style={{fontWeight: "bold"}} onClick={(e) => handleChange(e)} className="contact_button" variant="none" name='codigoCompra' value={Math.floor(Math.random() * 10000)} type="submit"> {
+                            <Button style={{ fontWeight: "bold" }} onClick={(e) => handleChange(e)} className="contact_button" variant="none" name='codigoCompra' value={Math.floor(Math.random() * 10000)} type="submit"> {
                                 cargaBoton
                                     ?
                                     <Spinner animation="border" variant="warning" />
                                     : "Confirmar datos"}
-                                    </Button>
+                            </Button>
                         </Form>
 
                         {alertSuccess && <Alert className='mt-3' variant="dark">{alertSuccess}</Alert>}

@@ -43,7 +43,7 @@ function FormContact() {
     return (
         <>
             <h1 data-aos="fade" data-aos-once="true" style={{ color: "white", textAlign: "center", margin: "-50px 0px 60px 0px", textShadow: "white 1px 0 15px", fontSize: "3rem" }}>Dejanos un mensaje</h1>
-            <div data-aos="fade-down" data-aos-once="true" data-aos-duration="600" data-aos-delay="200"  className='contact_section'>
+            <div data-aos="fade-down" data-aos-once="true" data-aos-duration="600" data-aos-delay="200" className='contact_section'>
                 <section className='contact_form'>
                     {alert && <Alert variant="danger">{alert}</Alert>}
                     <Form noValidate validated={validated} onSubmit={(e) => handleSubmit(e)}>
@@ -91,7 +91,7 @@ function FormContact() {
                             <Form.Control.Feedback>Recibido</Form.Control.Feedback>
                         </Form.Group>
                         <Button className="contact_button mb-3" variant="none" type="submit"> Enviar </Button>
-                        {alertSuccess && <Alert variant="dark">{alertSuccess}</Alert>}
+                        {alertSuccess && <Alert data-aos-duration="800" data-aos="fade-up" data-aos-delay="50" data-aos-once="true" variant="dark">{alertSuccess}</Alert>}
                     </Form>
                 </section>
             </div>

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import SearchaBar from './SearchaBar';
 import Pagination from './Pagination';
+import ScrollToTop from './ScrollToTop';
 
 function ProdsCatalogo() {
     const [products, setProducts] = useState([]);
@@ -62,6 +63,7 @@ function ProdsCatalogo() {
 
     return (
         <>
+        <ScrollToTop />
             {
                 cargando
                     ?
